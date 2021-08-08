@@ -17,7 +17,19 @@ Route::get('/', function () {
     return view('index');
 });
 
-
 Route::get('/books', function(){
     return view('books');
 });
+
+
+
+// Admin Routes
+
+Route::get('/adminaddbooks', function(){
+    return view('admin-addbook');
+})->name('adminaddbooks');
+
+
+Route::get('/adminlistbooks', function(){
+    return view('admin-listbooks');
+})->name('adminlistbooks');
