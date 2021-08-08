@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">List of Book</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -30,6 +30,7 @@
                       <th>Autor</th>
                       <th>Categories</th>
                       <th>Description</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -39,6 +40,14 @@
                       <td>Santidope</td>
                       <td>Math</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td>
+                          <button class="btn btn-danger .btn-sm">
+                              <i class="fas fa-trash"></i>
+                          </button>
+                          <button class="btn btn-success .btn-sm">
+                              <i class="fas fa-pencil-alt"></i>
+                          </button>
+                      </td>
                     </tr>
                     <tr>
                       <td>219</td>
@@ -46,6 +55,14 @@
                       <td>Santidope</td>
                       <td>Science</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td>
+                          <button class="btn btn-danger .btn-sm">
+                              <i class="fas fa-trash"></i>
+                          </button>
+                          <button class="btn btn-success .btn-sm">
+                              <i class="fas fa-pencil-alt"></i>
+                          </button>
+                      </td>
                     </tr>
                     <tr>
                       <td>657</td>
@@ -53,14 +70,32 @@
                       <td>Santidope</td>
                       <td>Math</t>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td>
+                          <button class="btn btn-danger .btn-sm">
+                              <i class="fas fa-trash"></i>
+                          </button>
+                          <button class="btn btn-success .btn-sm">
+                              <i class="fas fa-pencil-alt"></i>
+                          </button>
+                      </td>
                     </tr>
+                 
                     <tr>
                       <td>175</td>
                       <td>Title of Book</td>
                       <td>Santidope</td>
                       <td>English</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td>
+                          <button class="btn btn-danger .btn-sm">
+                              <i class="fas fa-trash"></i>
+                          </button>
+                          <button class="btn btn-success .btn-sm">
+                              <i class="fas fa-pencil-alt"></i>
+                          </button>
+                      </td>
                     </tr>
+                   
                   </tbody>
                 </table>
               </div>
