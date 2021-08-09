@@ -51,16 +51,38 @@ class BookController extends Controller
 
     public function edit($id)
     {
-        //
+        $book = Book::findorfail($id);
+        return view('admin-edit-book',compact('book'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->author = $request->author;
+        $book->categories = $request->categories;
+        if($request->hasFile('image'))
+        {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/books_image',$fileNameToStore);
+        }
+        else
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        $book->image = $fileNameToStore;
+        $book->update();
+        return back()->with('message', 'Successfully Updated!');
     }
 
     public function destroy($id)
     {
-        //
+        $book = Book::findorfail($id);
+        $book->delete();
+        return back()->with('message', 'Successfully Updated!');;
     }
 }

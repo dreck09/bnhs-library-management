@@ -45,4 +45,6 @@ Route::prefix('admin')->group(function(){
     Route::post('book/store', [BookController::class, 'store'])->name('book.store');
     Route::get('book/list', [BookController::class, 'index'])->name('admin-list-book');
     Route::delete('book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+    Route::get('book/edit/{id}',[BookController::class, 'edit'])->name('book.edit');
+    Route::put('book/update/{id}',[BookController::class, 'update'])->name('book.update');
 });

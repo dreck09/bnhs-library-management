@@ -42,12 +42,17 @@
                       <td>{{$data->categories}}</td>
                       <td>{{$data->image}}</td>
                       <td>
-                          <button class="btn btn-danger .btn-sm">
+                        <form action="{{route('book.destroy', $data->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                          <button type="submit" class="btn btn-danger .btn-sm">
                               <i class="fas fa-trash"></i>
                           </button>
-                          <button class="btn btn-success .btn-sm">
-                              <i class="fas fa-pencil-alt"></i>
-                          </button>
+                        </form>
+                          
+                          <a href="{{route('book.edit',$data->id)}}" class="btn btn-success .btn-sm">
+                            <i class="fas fa-pencil-alt"></i>
+                          </a>
                       </td>
                       @endforeach
                     </tr>
