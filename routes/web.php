@@ -20,6 +20,18 @@ Route::get('/admin-add-book', function () {
     return view('admin-add-book');
 })->name('admin-add-book');
 
+Route::get('/issue', function(){
+    return view('admin-issue-book');
+})->name('admin-issue-book');
+
+Route::get('/return', function(){
+    return view('admin-return-book');
+})->name('admin-return-book');
+
+Route::get('/registerstudent', function(){
+    return view('admin-register-student');
+})->name('registerstudent');
+
 // Route::get('/books', function(){
 //     return view('books');
 // });
