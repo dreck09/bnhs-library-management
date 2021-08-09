@@ -81,6 +81,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="nav-icon fas fa-undo-alt"></i>
            Return Books </a>
           </li>
+          <li class="nav-item">
+          <a href="{{ route('registerstudent') }}" class="nav-link">
+          <i class="nav-icon fas fa-user-plus"></i>
+           Register Student </a>
+          </li>
           
         </ul>
       </nav>

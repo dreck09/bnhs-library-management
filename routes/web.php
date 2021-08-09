@@ -28,6 +28,10 @@ Route::get('/return', function(){
     return view('admin-return-book');
 })->name('admin-return-book');
 
+Route::get('/registerstudent', function(){
+    return view('admin-register-student');
+})->name('registerstudent');
+
 // Route::get('/books', function(){
 //     return view('books');
 // });
