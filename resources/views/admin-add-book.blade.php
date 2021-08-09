@@ -6,6 +6,19 @@
     <div class="row">
         <!-- left column -->
         <div class="col-md-6">
+            @if(session('message'))
+                <div class="alert alert-success alert-dismissible">
+                    {{ session('message') }}
+                </div>
+            @elseif (session('delete-message'))
+                <div class="alert alert-danger alert-dismissible">
+                    {{ session('delete-message') }}
+                </div>
+            @elseif (session('update_message'))
+                <div class="alert alert-success alert-dismissible">
+                    {{ session('update_message') }}
+                </div>
+            @endif
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
@@ -13,41 +26,58 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form>
+                <form action="{{route('book.store')}}" method="post">
+                @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Title</label>
-                            <input type="text" class="form-control" id="" placeholder="Title">
+                            <label for="InputTitle">Title</label>
+                            <input type="text" name="title" class="form-control" id="InputTitle" placeholder="Title">
+                            @error('title')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+                        
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Description</label>
-                            <input type="text" class="form-control" id="" placeholder="Description">
+                            <label for="InputDescription">Description</label>
+                            <input type="text" name="description" class="form-control" id="InputDescription" placeholder="Description">
+                            @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+                        
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Author</label>
-                            <input type="text" class="form-control" id="" placeholder="Author">
+                            <label for="InputAuthor">Author</label>
+                            <input type="text" name="author" class="form-control" id="InputAuthor" placeholder="Author">
+                            @error('author')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+                        
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Categories</label>
-                            <select name="" id="" class="form-control">
-                                <option value="">Math</option>
-                                <option value="">Englis</option>
-                                <option value="">Science</option>
+                            <label for="InputCategories">Categories</label>
+                            <select name="categories" id="InputCategories" class="form-control">
+                                <option value="Math">Math</option>
+                                <option value="English">Englis</option>
+                                <option value="Science">Science</option>
                             </select>
+                            @error('categories')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
+                      
                         <div class="form-group">
                             <label for="exampleInputFile">Image</label>
                             <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                </div>
+                                <input class="form-control" placeholder="Excerpt" type="file" name="image">
                                 <div class="input-group-append">
                                     <span class="input-group-text">Upload</span>
                                 </div>
                             </div>
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-
+                        
                     </div>
                     <!-- /.card-body -->
 
