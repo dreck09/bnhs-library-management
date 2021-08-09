@@ -65,14 +65,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
           <li class="nav-item">
           <a href="{{ route('admin-add-book') }}" class="nav-link"> <i class="nav-icon fas fa-plus"></i>Add Book </a>
-          
           </li>
           <li class="nav-item">
           <a href="{{ route('admin-list-book') }}" class="nav-link">
           <i class="nav-icon fas fa-list"></i>
            List Books </a>
           </li>
-         
+          <li class="nav-item">
+          <a href="{{ route('admin-issue-book') }}" class="nav-link">
+          <i class="nav-icon fas fa-bug"></i>
+           Issue Books </a>
+          </li>
+          <li class="nav-item">
+          <a href="{{ route('admin-return-book') }}" class="nav-link">
+          <i class="nav-icon fas fa-undo-alt"></i>
+           Return Books </a>
+          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
