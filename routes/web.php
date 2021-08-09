@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +20,6 @@ Route::get('/admin-add-book', function () {
     return view('admin-add-book');
 })->name('admin-add-book');
 
-Route::get('/admin-list-book', function () {
-    return view('admin-list-book');
-})->name('admin-list-book');
-
-
 // Route::get('/books', function(){
 //     return view('books');
 // });
@@ -44,3 +39,10 @@ Route::get('/admin-list-book', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Admin Function
+Route::prefix('admin')->group(function(){
+    Route::post('book/store', [BookController::class, 'store'])->name('book.store');
+    Route::get('book/list', [BookController::class, 'index'])->name('admin-list-book');
+    Route::delete('book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+});

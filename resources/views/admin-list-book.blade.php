@@ -34,12 +34,13 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($books as $data)
                     <tr>
-                      <td>183</td>
-                      <td>Title of Book</td>
-                      <td>Santidope</td>
-                      <td>Math</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td>{{$data->id}}</td>
+                      <td>{{$data->title}}</td>
+                      <td>{{$data->author}}</td>
+                      <td>{{$data->categories}}</td>
+                      <td>{{$data->image}}</td>
                       <td>
                           <button class="btn btn-danger .btn-sm">
                               <i class="fas fa-trash"></i>
@@ -48,54 +49,8 @@
                               <i class="fas fa-pencil-alt"></i>
                           </button>
                       </td>
+                      @endforeach
                     </tr>
-                    <tr>
-                      <td>219</td>
-                      <td>Title of Book</td>
-                      <td>Santidope</td>
-                      <td>Science</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                          <button class="btn btn-danger .btn-sm">
-                              <i class="fas fa-trash"></i>
-                          </button>
-                          <button class="btn btn-success .btn-sm">
-                              <i class="fas fa-pencil-alt"></i>
-                          </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>657</td>
-                      <td>Title of Book</td>
-                      <td>Santidope</td>
-                      <td>Math</t>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                          <button class="btn btn-danger .btn-sm">
-                              <i class="fas fa-trash"></i>
-                          </button>
-                          <button class="btn btn-success .btn-sm">
-                              <i class="fas fa-pencil-alt"></i>
-                          </button>
-                      </td>
-                    </tr>
-                 
-                    <tr>
-                      <td>175</td>
-                      <td>Title of Book</td>
-                      <td>Santidope</td>
-                      <td>English</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                          <button class="btn btn-danger .btn-sm">
-                              <i class="fas fa-trash"></i>
-                          </button>
-                          <button class="btn btn-success .btn-sm">
-                              <i class="fas fa-pencil-alt"></i>
-                          </button>
-                      </td>
-                    </tr>
-                   
                   </tbody>
                 </table>
               </div>
