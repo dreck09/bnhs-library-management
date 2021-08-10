@@ -10,14 +10,6 @@
                 <div class="alert alert-success alert-dismissible">
                     {{ session('message') }}
                 </div>
-            @elseif (session('delete-message'))
-                <div class="alert alert-danger alert-dismissible">
-                    {{ session('delete-message') }}
-                </div>
-            @elseif (session('update_message'))
-                <div class="alert alert-success alert-dismissible">
-                    {{ session('update_message') }}
-                </div>
             @endif
             <!-- general form elements -->
             <div class="card card-primary">

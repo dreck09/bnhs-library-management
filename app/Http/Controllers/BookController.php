@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon;
 use App\Models\Book;
+use App\Models\Student;
+use App\Models\IssueBook;
 use App\Http\Requests\BookCreateRequest;
+use App\Http\Requests\IssueRequest;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -12,11 +16,6 @@ class BookController extends Controller
     {
         $books = Book::get();
         return view('admin-list-book',compact('books'));
-    }
-
-    public function create()
-    {
-        //
     }
 
     public function store(BookCreateRequest $request)
@@ -35,18 +34,14 @@ class BookController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
         $book = Book::create([
+            'book_id' => $validate['book_id'],
             'title' => $validate['title'],
             'description' => $validate['description'],
             'author' => $validate['author'],
             'categories' => $validate['categories'],
             'image' => $fileNameToStore,
         ]);
-        return back()->with('message', 'Successfully Added!');
-    }
-
-    public function show($id)
-    {
-        //
+        return back()->with('message', 'Successfully Book Added!');
     }
 
     public function edit($id)
@@ -83,6 +78,44 @@ class BookController extends Controller
     {
         $book = Book::findorfail($id);
         $book->delete();
-        return back()->with('message', 'Successfully Updated!');;
+        return back()->with('message', 'Successfully Updated!');
+    }
+
+    public function issuedBook(IssueRequest $request)
+    {
+        $book_id = Book::where('book_id',$request->book_id)->get();
+        foreach($book_id as $data){
+            $book = $data;
+        }
+        $student_id = Student::where('student_id',$request->student_id)->get();
+        foreach($student_id as $data){
+            $student = $data;
+        }
+        $validate = $request->validated();
+        $issue_book = IssueBook::create([
+            'book_id' => $book->id,
+            'student_id' => $student->id,
+            'issue_date' => $validate['issue_date'],
+            'return_date' => $validate['return_date'],
+        ]);
+        return back()->with('message', 'Successfully Borrow Added!');
+    }
+
+    public function issuedList()
+    {
+        $timeNow = Carbon\Carbon::now();
+        $issue_books = IssueBook::with('book')->get();
+        foreach($issue_books as $dtmp){
+            $issue_book_temp = $dtmp;
+        }
+        $books = Book::where('id', $issue_book_temp->book_id)->get();
+        foreach($books as $dtmp){
+            $book_data[] = $dtmp;
+        }
+        $students = Student::where('id',$issue_book_temp->student_id)->get();
+        foreach($students as $dtmp){
+            $student_data[] = $dtmp;
+        }
+        return view('admin-return-book',compact('book_data','student_data','issue_books','timeNow'));
     }
 }

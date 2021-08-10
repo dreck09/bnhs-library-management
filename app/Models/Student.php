@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Student extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'book_id',
-        'title',
-        'description',
-        'author',
-        'categories',
-        'image',
+        'student_id',
+        'fullname',
+        'gender',
+        'grade_section',
+        'cpnumber',
     ];
 
     public function issue_book()

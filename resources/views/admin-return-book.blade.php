@@ -3,7 +3,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">List of Barrow Table</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -22,32 +22,37 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>B-ID</th>
-                      <th>B-Title</th>
-                      <th>B-Authhor</th>
+                      <th>Book-ID</th>
+                      <th>Title</th>
+                      <th>Authhor</th>
+                      <th>Student ID</th>
+                      <th>Student Name</th>
                       <th>IssueDate</th>
-                      <th>ReturnOn</th>
-                      <th>S-Name</th>
-                      <th>S-ID No.</th>
-                      <th>Fine</th>
                       <th>Due Date</th>
+                      <th>ReturnOn</th>
+                      <th>Fine</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($book_data as $d1)
+                    @foreach($student_data as $d2)
+                    @foreach($issue_books as $d3)
                     <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td>11-7-2014</td>
-                      <td>11-7-2014</td>
-                      <td>11-7-2014</td>
+                      <td>{{$d1->book_id}}</td>
+                      <td>{{$d1->title}}</td>
+                      <td>{{$d1->author}}</td>
+                      <td>{{$d2->student_id}}</td>
+                      <td>{{$d2->fullname}}</td>
+                      <td>{{$d3->issue_date}}</td>
+                      <td>{{$d3->return_date}}</td>
+                      <td>{{$timeNow->toDateTimeString()}}</td>
+                      <td><select name="" id=""></select></td>
                       <td><Button class="btn btn-success">Return</Button></td>
                     </tr>
-                   
+                    @endforeach
+                    @endforeach
+                    @endforeach
                   </tbody>
                 </table>
               </div>
