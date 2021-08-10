@@ -25,7 +25,7 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>Book No.</th>
                       <th>Title</th>
                       <th>Autor</th>
                       <th>Categories</th>
@@ -36,7 +36,7 @@
                   <tbody>
                     @foreach($books as $data)
                     <tr>
-                      <td>{{$data->id}}</td>
+                      <td>{{$data->book_id}}</td>
                       <td>{{$data->title}}</td>
                       <td>{{$data->author}}</td>
                       <td>{{$data->categories}}</td>
@@ -48,11 +48,10 @@
                           <button type="submit" class="btn btn-danger .btn-sm">
                               <i class="fas fa-trash"></i>
                           </button>
-                        </form>
-                          
                           <a href="{{route('book.edit',$data->id)}}" class="btn btn-success .btn-sm">
                             <i class="fas fa-pencil-alt"></i>
                           </a>
+                        </form>
                       </td>
                       @endforeach
                     </tr>

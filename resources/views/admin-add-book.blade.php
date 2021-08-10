@@ -10,14 +10,6 @@
                 <div class="alert alert-success alert-dismissible">
                     {{ session('message') }}
                 </div>
-            @elseif (session('delete-message'))
-                <div class="alert alert-danger alert-dismissible">
-                    {{ session('delete-message') }}
-                </div>
-            @elseif (session('update_message'))
-                <div class="alert alert-success alert-dismissible">
-                    {{ session('update_message') }}
-                </div>
             @endif
             <!-- general form elements -->
             <div class="card card-primary">
@@ -29,6 +21,13 @@
                 <form action="{{route('book.store')}}" method="post">
                 @csrf
                     <div class="card-body">
+                        <div class="form-group">
+                            <label for="InputTitle">Book No.</label>
+                            <input type="text" name="book_id" class="form-control" id="InputTitle" placeholder="Book Number">
+                            @error('book_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="InputTitle">Title</label>
                             <input type="text" name="title" class="form-control" id="InputTitle" placeholder="Title">

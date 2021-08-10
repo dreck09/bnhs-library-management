@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,39 +25,31 @@ Route::get('/issue', function(){
     return view('admin-issue-book');
 })->name('admin-issue-book');
 
-Route::get('/return', function(){
-    return view('admin-return-book');
-})->name('admin-return-book');
-
 Route::get('/registerstudent', function(){
     return view('admin-register-student');
 })->name('registerstudent');
 
-// Route::get('/books', function(){
-//     return view('books');
-// });
-
-
-
-// Admin Routes
-
-// Route::get('/adminaddbooks', function(){
-//     return view('admin-addbook');
-// })->name('adminaddbooks');
-
-
-// Route::get('/adminlistbooks', function(){
-//     return view('admin-listbooks');
-// })->name('adminlistbooks');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Admin Function
 Route::prefix('admin')->group(function(){
+    //Book Route
     Route::post('book/store', [BookController::class, 'store'])->name('book.store');
     Route::get('book/list', [BookController::class, 'index'])->name('admin-list-book');
     Route::delete('book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
     Route::get('book/edit/{id}',[BookController::class, 'edit'])->name('book.edit');
     Route::put('book/update/{id}',[BookController::class, 'update'])->name('book.update');
+    //Issue Book Student
+    Route::post('book/student/issue',[BookController::class, 'issuedBook'])->name('book-student.issue');
+    Route::get('book/student/issue/list', [BookController::class, 'issuedList'])->name('admin-return-book');
+    
+    //Student Route
+    Route::post('student/store', [StudentController::class, 'store'])->name('student.store');
+    Route::get('student/list', [StudentController::class, 'index'])->name('student-list-book');
+    Route::delete('student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
+    Route::get('student/edit/{id}',[StudentController::class, 'edit'])->name('student.edit');
+    Route::put('student/update/{id}',[StudentController::class, 'update'])->name('student.update');
+    
 });
