@@ -44,12 +44,10 @@ Route::prefix('admin')->group(function(){
     //Issue Book Student
     Route::post('book/student/issue',[BookController::class, 'issuedBook'])->name('book-student.issue');
     Route::get('book/student/issue/list', [BookController::class, 'issuedList'])->name('admin-return-book');
-    
     //Student Route
     Route::post('student/store', [StudentController::class, 'store'])->name('student.store');
     Route::get('student/list', [StudentController::class, 'index'])->name('student-list-book');
     Route::delete('student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
     Route::get('student/edit/{id}',[StudentController::class, 'edit'])->name('student.edit');
     Route::put('student/update/{id}',[StudentController::class, 'update'])->name('student.update');
-    
 });
