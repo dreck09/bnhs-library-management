@@ -11,7 +11,7 @@ class StudentController extends Controller
     public function index()
     {
         $student = Student::get();
-        return view('admin-list-student',compact('books'));
+        return view('admin-list-student',compact('student'));
     }
 
     public function store(StudentCreateRequest $request)
