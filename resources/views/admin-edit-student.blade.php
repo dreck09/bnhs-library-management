@@ -12,12 +12,11 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Register Student</h3>
+                <h3 class="card-title">Edit Student</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('student.store')}}" method="post">
-                @csrf
+              <form action="" method="post">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="bookid">Student ID:</label>
@@ -57,7 +56,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Add Student</button>
+                  <button type="submit" class="btn btn-primary">Update Student</button>
                 </div>
               </form>
             </div>
