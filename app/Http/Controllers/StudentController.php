@@ -29,8 +29,8 @@ class StudentController extends Controller
 
     public function edit($id)
     {
-        $student = Book::findorfail($id);
-        return view('admin-edit-student',compact('book'));
+        $student = Student::findorfail($id);
+        return view('admin-edit-student',compact('student'));
     }
 
     public function update(Request $request, $id)
