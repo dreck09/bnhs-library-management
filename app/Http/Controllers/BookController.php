@@ -104,18 +104,46 @@ class BookController extends Controller
     public function issuedList()
     {
         $timeNow = Carbon\Carbon::now();
-        $issue_books = IssueBook::with('book')->get();
-        foreach($issue_books as $dtmp){
-            $issue_book_temp = $dtmp;
-        }
-        $books = Book::where('id', $issue_book_temp->book_id)->get();
-        foreach($books as $dtmp){
-            $book_data[] = $dtmp;
-        }
-        $students = Student::where('id',$issue_book_temp->student_id)->get();
-        foreach($students as $dtmp){
-            $student_data[] = $dtmp;
-        }
-        return view('admin-return-book',compact('book_data','student_data','issue_books','timeNow'));
+        // $issue_books = IssueBook::with('book')->get();
+        // foreach($issue_books as $dtmp){
+        //     $issue_book_temp = $dtmp;
+        //     $books = Book::where('id', $issue_book_temp->book_id)->get();
+        //     $students = Student::where('id',$issue_book_temp->student_id)->get();
+        // }
+        // foreach($books as $dtmp){
+        //     $book_data[] = $dtmp;
+        // }
+        // foreach($students as $dtmp){
+        //     $student_data[] = $dtmp;
+        // }
+        // $book = Book::with('issue_book')->get();
+        // $student = Student::with('issue_book')->get();
+        // // 
+        // foreach($issue_book as $dtmp){
+        //     $issue_books = $dtmp;
+        // }
+        // foreach($book as $dtmp){
+        //     $books[] = $dtmp;
+        // }
+        // foreach($student as $dtmp){
+        //     $students[] = $dtmp;
+        // }
+        $issue_books = IssueBook::join('students', 'students.id', '=', 'issue_books.student_id')
+        ->join('books', 'books.id', '=', 'issue_books.book_id')
+        ->select(
+            'students.student_id as student_id',
+            'students.fullname as fullname',
+            'books.book_id as book_id',
+            'books.title as title',
+            'books.author as author',
+            'issue_books.issue_date',
+            'issue_books.return_date'
+        )
+        ->groupBy('students.student_id', 'students.fullname', 'books.book_id', 'books.title', 'books.author', 'issue_books.issue_date', 'issue_books.return_date')
+        ->get();
+        // foreach($issue_book as $data){
+        //     dd($data->book_id);
+        // }
+        return view('admin-return-book',compact('issue_books'));
     }
 }

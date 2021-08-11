@@ -21,11 +21,11 @@ Route::get('/admin-add-book', function () {
     return view('admin-add-book');
 })->name('admin-add-book');
 
-Route::get('/issue', function(){
+Route::get('/addmin-issue-book', function(){
     return view('admin-issue-book');
 })->name('admin-issue-book');
 
-Route::get('/registerstudent', function(){
+Route::get('/register-student', function(){
     return view('admin-register-student');
 })->name('registerstudent');
 
