@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-md-12">
             @if(session('message'))
                 <div class="alert alert-success alert-dismissible">
                     {{ session('message') }}
