@@ -34,22 +34,28 @@
                     </tr>
                   </thead>
                   <tbody>
+                     @foreach($student as $data)
                     <tr>
-                      <td>1231</td>
-                      <td>Student1</td>
-                      <td>Male</td>
-                      <td>8-Pale</td>
-                      <td>0921133311</td>
+                      <td>{{$data->student_id}}</td>
+                      <td>{{$data->fullname}}</td>
+                      <td>{{$data->gender}}</td>
+                      <td>{{$data->grade_section}}</td>
+                      <td>{{$data->cpnumber}}</td>
                       <td>
-                        <form action="" method="post">
+                      
+                      <form action="{{route('student.destroy', $data->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
                           <button type="submit" class="btn btn-danger .btn-sm">
                               <i class="fas fa-trash"></i>
                           </button>
-                          <a href="#" class="btn btn-success .btn-sm">
+                          
+                          <a href="{{route('student.edit',$data->id)}}" class="btn btn-success .btn-sm">
                             <i class="fas fa-pencil-alt"></i>
                           </a>
                         </form>
                       </td>
+                      @endforeach
                     </tr>
                   </tbody>
                 </table>
