@@ -29,29 +29,21 @@
                       <th>Student Name</th>
                       <th>IssueDate</th>
                       <th>Due Date</th>
-                      <th>ReturnOn</th>
-                      <th>Fine</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($book_data as $d1)
-                    @foreach($student_data as $d2)
-                    @foreach($issue_books as $d3)
+                  @foreach($issue_books as $data)
                     <tr>
-                      <td>{{$d1->book_id}}</td>
-                      <td>{{$d1->title}}</td>
-                      <td>{{$d1->author}}</td>
-                      <td>{{$d2->student_id}}</td>
-                      <td>{{$d2->fullname}}</td>
-                      <td>{{$d3->issue_date}}</td>
-                      <td>{{$d3->return_date}}</td>
-                      <td>{{$timeNow->toDateTimeString()}}</td>
-                      <td><select name="" id=""></select></td>
-                      <td><Button class="btn btn-success">Return</Button></td>
+                      <td>{{$data->book_id}}</td>
+                      <td>{{$data->title}}</td>
+                      <td>{{$data->author}}</td>
+                      <td>{{$data->student_id}}</td>
+                      <td>{{$data->fullname}}</td>
+                      <td>{{$data->issue_date}}</td>
+                      <td>{{$data->return_date}}</td>
+                      <td><a class="btn btn-success">Return</a></td>
                     </tr>
-                    @endforeach
-                    @endforeach
                     @endforeach
                   </tbody>
                 </table>
