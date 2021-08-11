@@ -64,7 +64,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-          <a href="{{ route('admin-add-book') }}" class="nav-link"> <i class="nav-icon fas fa-plus"></i>Add Book </a>
+          <a href="{{ route('admin-dashboard') }}" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            Dashboard </a>
+          </li>
+          <li class="nav-item">
+          <a href="{{ route('admin-add-book') }}" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            Add Book </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('admin-list-book') }}" class="nav-link">
@@ -73,13 +80,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="nav-item">
           <a href="{{ route('admin-issue-book') }}" class="nav-link">
-          <i class="nav-icon fas fa-bug"></i>
+          <i class="nav-icon fas fa-book-medical"></i>
            Issue Books </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('admin-return-book') }}" class="nav-link">
           <i class="nav-icon fas fa-undo-alt"></i>
-           Return Books </a>
+           Borrow Books </a>
+          </li>
+          <li class="nav-item">
+          <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-redo-alt"></i>
+           Returned History </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('registerstudent') }}" class="nav-link">

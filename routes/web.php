@@ -21,6 +21,10 @@ Route::get('/admin-add-book', function () {
     return view('admin-add-book');
 })->name('admin-add-book');
 
+Route::get('/admin-dashboard', function () {
+    return view('admin-dashboard');
+})->name('admin-dashboard');
+
 Route::get('/addmin-issue-book', function(){
     return view('admin-issue-book');
 })->name('admin-issue-book');
