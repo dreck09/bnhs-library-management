@@ -9,14 +9,44 @@
 
     <!--start book-->
     <div class="row">
-        <div class="col-md-4 col-sm-6 col-12">
+        <div class="col-md-4 col-sm-6 col-12 bookouter">
             <div class="book-container">
                 <div class="image">
                     <img src="{{asset('/images/book.svg')}}" />
                 </div>
                 <div class="text">
                     <h3>Title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias suscipit odit placeat natus omnis! Reprehenderit sed non in aliquam deserunt.</p>
+                    <p>n in aliquam deserunt.</p>
+                    <p class="color">Author Name</p>
+                    <p class="color">Available Book 20</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-12 bookouter">
+            <div class="book-container">
+                <div class="image">
+                    <img src="{{asset('/images/book.svg')}}" />
+                </div>
+                <div class="text">
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus at recusandae nobis culpa, repellendus voluptas, nihil eveniet adipisci esse pariatur, saepe incidunt aliquam! Cum optio ducimus qui delectus accusantium voluptates!</p>
+                    <p class="color">Author Name</p>
+                    <p class="color">Available Book 20</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-6 col-12 bookouter">
+            <div class="book-container">
+                <div class="image">
+                    <img src="{{asset('/images/book.svg')}}" />
+                </div>
+                <div class="text">
+                    <h3>Title</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus at recusandae nobis culpa, repellendus voluptas, nihil eveniet adipisci esse pariatur, saepe incidunt aliquam! Cum optio ducimus qui delectus accusantium voluptates!
+                    </p>
                     <p class="color">Author Name</p>
                     <p class="color">Available Book 20</p>
                 </div>
