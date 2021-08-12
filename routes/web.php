@@ -33,6 +33,11 @@ Route::get('/register-student', function(){
     return view('admin-register-student');
 })->name('registerstudent');
 
+//Available book home page routes
+Route::get('/available-book', function(){
+    return view('home-book');
+})->name("availablebook");
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

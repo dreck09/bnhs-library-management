@@ -14,7 +14,7 @@
     </div>
 </section>
 
-<div class="about_us" id="#about_us">
+<div class="about_us" id="about">
     <div class="text-center title-head">
         <h1>About Us</h1>
     </div>
@@ -88,7 +88,7 @@
     </div>
 
     <div class="left-button text-right">
-        <a class="btn" href="#">Check All Books Available</a>
+        <a class="btn" href="/available-book">Check All Books Available</a>
     </div>
 
 </div>
