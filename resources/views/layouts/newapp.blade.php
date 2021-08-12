@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('newapp.name', 'Admin Login') }}</title>
+    <title>{{ $metaTitle ?? config('newapp.name', 'Admin Login') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -40,7 +40,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Go Back</a>
+                            <a class="nav-link" href="{{ url('/') }}">Go Back</a>
                         </li>
                     </ul>
                 </div>

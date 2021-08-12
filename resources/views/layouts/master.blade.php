@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--@yield('title')-->
-  <title>Admin Dashboard</title>
+  <title>{{ $metaTitle ?? config('newapp.name', 'Admin Dashboard') }}</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <!-- Google Font: Source Sans Pro -->
@@ -29,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ route('dashboard') }}" class="brand-link">
       <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
       <span class="brand-text font-weight-light">BNHSLM</span>
     </a>
@@ -46,47 +46,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <!-- <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div> -->
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-          <a href="{{ route('admin-dashboard') }}" class="nav-link">
+          <a href="{{ route('dashboard') }}" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             Dashboard </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('admin-add-book') }}" class="nav-link">
+          <a href="{{ route('add.book') }}" class="nav-link">
             <i class="nav-icon fas fa-plus"></i>
             Add Book </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('admin-list-book') }}" class="nav-link">
+          <a href="{{ route('book.list') }}" class="nav-link">
           <i class="nav-icon fas fa-list"></i>
            List Books </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('admin-issue-book') }}" class="nav-link">
+          <a href="{{ route('issue.book') }}" class="nav-link">
           <i class="nav-icon fas fa-book-medical"></i>
            Issue Books </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('admin-return-book') }}" class="nav-link">
+          <a href="{{ route('issue.book.list') }}" class="nav-link">
           <i class="nav-icon fas fa-undo-alt"></i>
-           Borrow Books </a>
+           Borrow History </a>
           </li>
           <li class="nav-item">
           <a href="#" class="nav-link">
@@ -94,16 +82,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
            Returned History </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('registerstudent') }}" class="nav-link">
+          <a href="{{ route('register.student') }}" class="nav-link">
           <i class="nav-icon fas fa-user-plus"></i>
            Register Student </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('admin-list-student') }}" class="nav-link">
+          <a href="{{ route('student.list') }}" class="nav-link">
           <i class="nav-icon fas fas fa-list"></i>
            List Student </a>
           </li>
-          
+          <hr>
+          @guest @if (Route::has('login'))
+          @endif @else
+          <li class="nav-item">
+          <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">
+          <i class="nav-icon fas fa-sign-out-alt"></i>
+            Logout</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+          </li>
+          @endguest
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

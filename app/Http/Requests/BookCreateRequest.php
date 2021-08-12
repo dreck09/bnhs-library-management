@@ -29,7 +29,7 @@ class BookCreateRequest extends FormRequest
             'description' => ['required'],
             'author' => ['required'],
             'categories' => ['required'],
-            'image' => ['required'],
+            'image' => 'nullable|image|file|max:5000'
         ];
     }
 }

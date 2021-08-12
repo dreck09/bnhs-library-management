@@ -15,7 +15,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::get();
-        return view('admin-list-book',compact('books'));
+        return view('admin-list-book',compact('books'), ['metaTitle'=>'Admin Book List | BNHS - Library Management']);
     }
 
     public function store(BookCreateRequest $request)
@@ -31,7 +31,7 @@ class BookController extends Controller
         }
         else
         {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'noimage.png';
         }
         $book = Book::create([
             'book_id' => $validate['book_id'],
@@ -144,11 +144,30 @@ class BookController extends Controller
         // foreach($issue_book as $data){
         //     dd($data->book_id);
         // }
-        return view('admin-return-book',compact('issue_books'));
+        return view('admin-barrow-book',compact('issue_books'), ['metaTitle'=>'Borrow History | BNHS - Library Management']);
     }
     public function allBooks()
     {
         $books = Book::get();
-        return view('home-book',compact('books'));
+        return view('home-book',compact('books'),['metaTitle'=>'Available Books']);
     }
+    public function returnedList()
+    {
+        $returnBook = ReturnedBook::join('students', 'students.id', '=', 'issue_books.student_id')
+        ->join('books', 'books.id', '=', 'issue_books.book_id')
+        ->select(
+            'students.student_id as student_id',
+            'students.fullname as fullname',
+            'books.book_id as book_id',
+            'books.title as title',
+            'books.author as author',
+            'issue_books.issue_date',
+            'issue_books.return_date'
+        )
+        ->groupBy('students.student_id', 'students.fullname', 'books.book_id', 'books.title', 'books.author', 'issue_books.issue_date', 'issue_books.return_date')
+        ->get();
+        return view('admin-return-book',compact('returnBook'), ['metaTitle'=>'Return History | BNHS - Library Management']);
+            
+    }
+
 }
