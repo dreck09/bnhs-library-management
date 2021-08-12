@@ -88,7 +88,7 @@
     </div>
 
     <div class="left-button text-right">
-        <a class="btn" href="/available-book">Check All Books Available</a>
+        <a class="btn" href="{{route('home-book')}}">Check All Books Available</a>
     </div>
 
 </div>

@@ -16,7 +16,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{route('book-student.issue')}}" method="post">
+        <form action="{{route('add.issue.book')}}" method="post">
           @csrf
           <div class="card-body">
             <div class="form-group">

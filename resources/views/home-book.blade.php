@@ -13,7 +13,7 @@
         <div class="col-md-4 col-sm-6 col-12 bookouter">
             <div class="book-container">
                 <div class="image">
-                    <img src="{{asset('/images/book.svg')}}" />
+                    <img src="/storage/books_image/{{$data->image}}" />
                 </div>
                 <div class="text">
                     <h3>{{$data->title}}</h3>

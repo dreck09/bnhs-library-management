@@ -18,7 +18,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{route('book.store')}}" method="post">
+                <form action="{{route('book.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                     <div class="card-body">
                         <div class="form-group">
@@ -67,7 +67,7 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Image</label>
                             <div class="input-group">
-                                <input class="form-control" placeholder="Excerpt" type="file" name="image">
+                                <input class="form-control" type="file" name="image">
                                 <div class="input-group-append">
                                     <span class="input-group-text">Upload</span>
                                 </div>
