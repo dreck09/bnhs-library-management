@@ -58,7 +58,7 @@
                             <a class="nav-link" href="#books">Books</a>
                         </li>
 
-                        @guest @if (Route::has('login'))
+                        <!-- @guest @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
@@ -83,7 +83,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                        @endguest -->
                     </ul>
                 </div>
             </div>
@@ -94,20 +94,26 @@
         </main>
     </div>
 
-    <footer>
+    <footer class="">
         <div class="footer-container">
-        <div class="image">
-            <img src="{{asset('/images/logo.png')}}" alt="">
-        </div>
-        <div class="title">
-        
-        <h1>Bulan National High School</h1>
-       <p>Library Management System</p>
-        </div>
-        
-        </div>
+            <div class="image">
+                <img src="{{asset('/images/logo.png')}}" alt="">
+                <div class="title">
+                    <h1>Bulan National High School</h1>
+                    <p>Library Management System</p>
 
-      
+                    <div class="contact-info">
+                        <p> Tel No: +63 (2)-12345-123</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="term">
+            <ul>
+                <li><a href="#" class="line">Term and Condition</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
