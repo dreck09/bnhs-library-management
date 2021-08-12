@@ -146,4 +146,9 @@ class BookController extends Controller
         // }
         return view('admin-return-book',compact('issue_books'));
     }
+    public function allBooks()
+    {
+        $books = Book::get();
+        return view('home-book',compact('books'));
+    }
 }

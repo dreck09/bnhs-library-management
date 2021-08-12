@@ -34,10 +34,8 @@ Route::get('/register-student', function(){
 })->name('registerstudent');
 
 //Available book home page routes
-Route::get('/available-book', function(){
-    return view('home-book');
-})->name("availablebook");
 
+Route::get('available/book/list', [BookController::class, 'allBooks'])->name('home-book');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
