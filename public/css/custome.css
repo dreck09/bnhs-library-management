@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 200px 50px;
+    padding: 150px 50px;
 }
 
 .home {
@@ -270,4 +270,59 @@ footer .term ul li a.line::after {
     .card {
         width: 300px;
     }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search .input-search {
+    width: 80%;
+    padding: 10px 20px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border: none;
+    /* border-radius: 20px; */
+}
+
+.search .input-button {
+    width: 20%;
+    padding: 10px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: none;
+    background-color: #050049;
+    color: white;
+    /* border-top-bottom-radius: 25px; */
+}
+
+.book-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    /* box-shadow: gray 1px 1px 1px 1px; */
+    background-color: white;
+}
+
+.book-container .text {
+    text-align: left;
+    padding: 10px
+}
+
+.book-container .text .color {
+    color: gray;
+}
+
+.book-container .image img {
+    max-width: 100%;
+    border: none;
+}
+
+.newapplayout {
+    background-color: rgb(216, 216, 216);
 }

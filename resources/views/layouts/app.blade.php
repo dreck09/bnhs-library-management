@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'BNHS - Library Management') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -49,7 +49,7 @@
                             <a class="nav-link" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about_us">About Us</a>
+                            <a class="nav-link" href="#about">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact_us">Contact Us</a>
