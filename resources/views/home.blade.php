@@ -18,11 +18,12 @@
     <div class="text-center title-head">
         <h1>About Us</h1>
     </div>
-
     <div class="inner-container">
         <div class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam assumenda eum culpa, earum provident iusto vitae cum minus vero voluptate quas sit velit dolore delectus unde explicabo quisquam similique magni reprehenderit consectetur tenetur!
-            Blanditiis temporibus repellat obcaecati excepturi quas cupiditate officia nisi sit enim aspernatur, ipsam voluptatum omnis vero.
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam assumenda eum culpa, earum provident iusto vitae cum minus vero voluptate quas sit velit dolore delectus unde explicabo quisquam similique magni reprehenderit consectetur tenetur!
+                Blanditiis temporibus repellat obcaecati excepturi quas cupiditate officia nisi sit enim aspernatur, ipsam voluptatum omnis vero.
+            </p>
         </div>
         <div class="logo-svg">
             <img src="{{asset('/images/about.svg')}}" alt="">
