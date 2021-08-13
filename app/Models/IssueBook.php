@@ -13,6 +13,7 @@ class IssueBook extends Model
         'book_id',
         'student_id',
         'issue_date',
+        'qty',
         'return_date',
     ];
 

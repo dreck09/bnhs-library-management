@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIssueBooksTable extends Migration
+class CreateReturnBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateIssueBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('issue_books', function (Blueprint $table) {
+        Schema::create('return_books', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('student_id');
             $table->integer('qty');
             $table->dateTime('issue_date');
             $table->dateTime('return_date');
+            $table->dateTime('return_on');
+            $table->dateTime('lapse_date');
+            $table->integer('fines');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
@@ -33,6 +36,6 @@ class CreateIssueBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('issue_books');
+        Schema::dropIfExists('return_books');
     }
 }

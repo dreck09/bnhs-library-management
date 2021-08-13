@@ -16,9 +16,10 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('book_id');
-            $table->string('title')->unique();
+            $table->string('title');
             $table->string('description');
             $table->string('author');
+            $table->integer('qty');
             $table->string('categories');
             $table->string('image');
             $table->timestamps();

@@ -19,7 +19,11 @@
                     <h3>{{$data->title}}</h3>
                     <p>{{$data->description}}</p>
                     <p class="color">{{$data->author}}</p>
-                    <p class="color">Available Book 20</p>
+                    @if(!$data->qty == 0)
+                    <p class="color">Available Book {{$data->qty}}</p>
+                    @else
+                    <p class="text-danger">Not Avaible</p>
+                    @endif
                 </div>
             </div>
         </div>

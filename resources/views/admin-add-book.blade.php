@@ -11,6 +11,7 @@
                     {{ session('message') }}
                 </div>
             @endif
+                
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
@@ -30,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="InputTitle">Title</label>
-                            <input type="text" name="title" class="form-control" id="InputTitle" placeholder="Title">
+                            <input type="text" name="title" class="form-control" id="InputTitle" placeholder="Enter Title">
                             @error('title')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -38,7 +39,7 @@
                         
                         <div class="form-group">
                             <label for="InputDescription">Description</label>
-                            <input type="text" name="description" class="form-control" id="InputDescription" placeholder="Description">
+                            <textarea type="text" name="description" class="form-control" id="InputDescription" placeholder="Enter Description" maxlength="200"></textarea>
                             @error('description')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -46,8 +47,16 @@
                         
                         <div class="form-group">
                             <label for="InputAuthor">Author</label>
-                            <input type="text" name="author" class="form-control" id="InputAuthor" placeholder="Author">
+                            <input type="text" name="author" class="form-control" id="InputAuthor" placeholder="Enter Author">
                             @error('author')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputAuthor">Quantity</label>
+                            <input type="text" name="quantity" class="form-control" id="InputAuthor" placeholder="Enter Quantity">
+                            @error('quantity')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
