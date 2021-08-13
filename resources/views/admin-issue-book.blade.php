@@ -5,7 +5,7 @@
     <!-- left column -->
     <div class="col-md-12">
     @if(session('message'))
-        <div class="alert alert-success alert-dismissible">
+        <div class="alert alert-danger alert-dismissible">
             {{ session('message') }}
         </div>
     @endif
@@ -32,6 +32,13 @@
               @error('student_id')
                   <div class="text-danger">{{ $message }}</div>
               @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputAuthor">Quantity</label>
+                <input type="text" name="quantity" class="form-control" id="InputAuthor" placeholder="Enter Quantity">
+                @error('quantity')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
               <label for="borrowed">Borrowed Date:</label>

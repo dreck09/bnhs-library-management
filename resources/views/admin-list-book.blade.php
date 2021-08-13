@@ -28,6 +28,7 @@
                       <th>Book No.</th>
                       <th>Title</th>
                       <th>Autor</th>
+                      <th>Quantity</th>
                       <th>Categories</th>
                       <th>Description</th>
                       <th></th>
@@ -39,6 +40,7 @@
                       <td>{{$data->book_id}}</td>
                       <td>{{$data->title}}</td>
                       <td>{{$data->author}}</td>
+                      <td>{{$data->qty}}</td>
                       <td>{{$data->categories}}</td>
                       <td>{{$data->image}}</td>
                       <td>

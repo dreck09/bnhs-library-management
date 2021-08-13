@@ -26,6 +26,7 @@ class IssueRequest extends FormRequest
         return [
             'book_id' => ['required'],
             'student_id' => ['required'],
+            'quantity' => ['required'],
             'issue_date' => ['required'],
             'return_date' => ['required'],
         ];
