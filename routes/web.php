@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/available/book/list', [BookController::class, 'allBooks'])->name('home-book');
+Route::get('/available/book/search', [BookController::class, 'allBooksSearch'])->name('home-book-search');
 Auth::routes();
 
 Route::middleware('auth')->group(function () { 
@@ -41,7 +42,7 @@ Route::middleware('auth')->group(function () {
         //Return Book
         Route::get('book/student/return/list', [BookController::class, 'returnedList'])->name('return.book.list');
         //Student Route
-        Route::post('student/store', [StudentController::class, 'store'])->name('student.store');
+        Route::post('student/store', [StudentController::class, 'store'])->name('student.add');
         Route::get('student/list', [StudentController::class, 'index'])->name('student.list');
         Route::delete('student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
         Route::get('student/edit/{id}',[StudentController::class, 'edit'])->name('student.edit');
