@@ -5,26 +5,15 @@
 <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
+              <div class="card-header bg-primary">
                 <h3 class="card-title">List of Students</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
+              <div class="card-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
+                      <th hidden="">No.</th>
                       <th>Student ID</th>
                       <th>Name Of Student</th>
                       <th>Gender</th>
@@ -36,6 +25,7 @@
                   <tbody>
                      @foreach($student as $data)
                     <tr>
+                      <td hidden="">{{$data->id}}</td>
                       <td>{{$data->student_id}}</td>
                       <td>{{$data->fullname}}</td>
                       <td>{{$data->gender}}</td>

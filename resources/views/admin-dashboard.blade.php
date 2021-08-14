@@ -15,7 +15,7 @@
               <div class="icon">
                 <i class="fas fa-book"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/admin/book/student/issue/list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -39,13 +39,12 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3>{{$countStudent}}</h3>
-
                 <p>Student List</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/admin/student/list" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -54,7 +53,6 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3>65</h3>
-
                 <p>Not Return</p>
               </div>
               <div class="icon">
@@ -71,13 +69,12 @@
             <!-- small box -->
             <div class="small-box bg-purple">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{$countAvailableBook}}</h3>
                 <p>Active Books</p>
               </div>
               <div class="icon">
                 <i class="fas fa-book"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -85,14 +82,12 @@
             <!-- small box -->
             <div class="small-box bg-fuchsia">
               <div class="inner">
-                <h3>{{$countBook}}</h3>
-
+                <h3>{{$countTotalBook}}</h3>
                 <p>Total Books</p>
               </div>
               <div class="icon">
                 <i class="fas fa-book"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

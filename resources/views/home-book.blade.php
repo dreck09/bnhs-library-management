@@ -1,15 +1,18 @@
 @extends('layouts.newapp') @section('content')
+
 <div class="container my-5">
+    <form action="{{route('home-book-search')}}" method="get" enctype="multipart/form-data">
     <div class="row">
         <div class="col search">
-            <input class="input-search" type="text" placeholder="Search Autor or Title Book">
-            <input class="input-button" type="button" value="Search">
+            <input class="input-search" name="query" type="text" placeholder="Search Autor or Title Book">
+            <input class="input-button" type="submit" value="Search">
         </div>
     </div>
+    </form>
 
     <!--start book-->
     <div class="row">
-        @foreach($books as $data)
+        @forelse ($books as $data)
         <div class="col-md-4 col-sm-6 col-12 bookouter">
             <div class="book-container">
                 <div class="image">
@@ -20,19 +23,20 @@
                     <p>{{$data->description}}</p>
                     <p class="color">{{$data->author}}</p>
                     @if(!$data->qty == 0)
-                    <p class="color">Available Book {{$data->qty}}</p>
+                    <p class="color text-success">Available Book {{$data->qty}}</p>
                     @else
-                    <p class="text-danger">Not Avaible</p>
+                    <p class="color text-danger">Not Avaible</p>
                     @endif
                 </div>
             </div>
         </div>
-        @endforeach
-
-        
+        @empty
+            <h1 class="text-center col-md-12 mt-3 text-danger">Book Not Found!</h1>
+        @endforelse
         <!--End Book-->
-
     </div>
+    <div class="card-footer">{{ $books->links("pagination::bootstrap-4") }}</div>
+
 </div>
 <footer class="">
     <div class="footer-container">

@@ -11,19 +11,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!--@yield('title')-->
   <title>{{ $metaTitle ?? config('newapp.name', 'Admin Dashboard') }}</title>
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <!-- Google Font: Source Sans Pro -->
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <!-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> -->
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- Theme style -->
-  <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
+  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!-- Navbar -->
-  
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/admin/dashboard" class="nav-link">Home</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -53,43 +76,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
           <li class="nav-item">
           <a href="{{ route('dashboard') }}" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            Dashboard </a>
+          <i class="nav-icon fas fa-tachometer-alt"></i>
+          <p>Dashboard</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('add.book') }}" class="nav-link">
             <i class="nav-icon fas fa-plus"></i>
-            Add Book </a>
+            <p>Add Book</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('book.list') }}" class="nav-link">
           <i class="nav-icon fas fa-list"></i>
-           List Books </a>
+            <p>List Books</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('issue.book') }}" class="nav-link">
           <i class="nav-icon fas fa-book-medical"></i>
-           Issue Books </a>
+            <p>Issue Books</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('issue.book.list') }}" class="nav-link">
           <i class="nav-icon fas fa-undo-alt"></i>
-           Borrow History </a>
+            <p>Borrow History</p> </a>
           </li>
           <li class="nav-item">
           <a href="#" class="nav-link">
           <i class="nav-icon fas fa-redo-alt"></i>
-           Returned History </a>
+            <p>Returned History</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('register.student') }}" class="nav-link">
           <i class="nav-icon fas fa-user-plus"></i>
-           Register Student </a>
+            <p>Register Student</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('student.list') }}" class="nav-link">
           <i class="nav-icon fas fas fa-list"></i>
-           List Student </a>
+            <p>List Student</p> </a>
           </li>
           <hr>
           @guest @if (Route::has('login'))
@@ -98,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
           <i class="nav-icon fas fa-sign-out-alt"></i>
-            Logout</a>
+          <p>Logout</p></a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
@@ -151,15 +174,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-
-<script src="{{ asset('js/app.js') }}"></script>
-
 <!-- jQuery -->
-<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
-<!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
-<!-- <script src="dist/js/adminlte.min.js"></script> -->
+<script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "order":[[0,'desc']],
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+</script>
 </body>
 </html>

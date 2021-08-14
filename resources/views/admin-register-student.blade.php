@@ -16,7 +16,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('student.store')}}" method="post">
+              <form action="{{route('student.add')}}" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -35,7 +35,7 @@
                   </div>
                   <div class="form-group">
                     <label for="return">Gender:</label>
-                    <input type="text" name="gender" class="form-control" id="issueto" placeholder="ex: Male">
+                    <input type="text" name="gender" class="form-control" maxlength="4" id="issueto" placeholder="ex: Male">
                     @error('gender')
                       <div class="text-danger">{{ $message }}</div>
                     @enderror 
@@ -49,7 +49,7 @@
                   </div>
                   <div class="form-group">
                     <label for="borrowed">Phone Number:</label>
-                    <input type="text" name="cpnumber" class="form-control" id="return" placeholder="ex: 09120293837">
+                    <input type="text" name="cpnumber" class="form-control" id="return" maxlength="11" placeholder="ex: 09120293837">
                     @error('cpnumber')
                       <div class="text-danger">{{ $message }}</div>
                     @enderror

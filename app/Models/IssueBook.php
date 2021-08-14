@@ -14,6 +14,7 @@ class IssueBook extends Model
         'student_id',
         'issue_date',
         'qty',
+        'status',
         'return_date',
     ];
 

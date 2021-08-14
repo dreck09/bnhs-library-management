@@ -12,12 +12,14 @@ class PageController extends Controller
     {
         $books = Book::get();
         $students = Student::get();
-        $issue_books = IssueBook::get();
-        $countIssueBook = $issue_books->count();
-        $countBook = $books->count();
+        $t_books = Book::sum('qty');
+        $issue_books = IssueBook::sum('qty');
+        $countIssueBook = $issue_books;
+        $countTotalBook = $books->count();
+        $countAvailableBook = $t_books;
         $countStudent = $students->count();
         return view('admin-dashboard',
-            compact('countBook','countStudent','countIssueBook'),
+            compact('countTotalBook','countStudent','countIssueBook','countAvailableBook'),
             ['metaTitle'=>'Admin Dashboard | BNHS - Library Management']);
     }
     public function addBooks()

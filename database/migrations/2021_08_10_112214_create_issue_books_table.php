@@ -18,6 +18,7 @@ class CreateIssueBooksTable extends Migration
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('student_id');
             $table->integer('qty');
+            $table->string('status');
             $table->dateTime('issue_date');
             $table->dateTime('return_date');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');

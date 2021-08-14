@@ -15,16 +15,11 @@ class CreateReturnBooksTable extends Migration
     {
         Schema::create('return_books', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('book_id');
-            $table->unsignedBigInteger('student_id');
-            $table->integer('qty');
-            $table->dateTime('issue_date');
-            $table->dateTime('return_date');
+            $table->unsignedBigInteger('issue_id');
             $table->dateTime('return_on');
             $table->dateTime('lapse_date');
             $table->integer('fines');
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->integer('remarks');
             $table->timestamps();
         });
     }

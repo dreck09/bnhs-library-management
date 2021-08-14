@@ -20,14 +20,14 @@
           @csrf
           <div class="card-body">
             <div class="form-group">
-              <label for="bookid">Book No.:</label>
+              <label for="bookid">Book No.</label>
               <input type="text" class="form-control" name="book_id" id="bookid" placeholder="Enter Book Number">
               @error('book_id')
                   <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>
             <div class="form-group">
-              <label for="issueto">Issue To:</label>
+              <label for="issueto">Issue To</label>
               <input type="text" class="form-control" name="student_id" id="issueto" placeholder="Enter Student ID">
               @error('student_id')
                   <div class="text-danger">{{ $message }}</div>
@@ -35,20 +35,20 @@
             </div>
             <div class="form-group">
                 <label for="InputAuthor">Quantity</label>
-                <input type="text" name="quantity" class="form-control" id="InputAuthor" placeholder="Enter Quantity">
+                <input type="number" name="quantity" class="form-control" id="InputAuthor" placeholder="Enter Quantity">
                 @error('quantity')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
-              <label for="borrowed">Borrowed Date:</label>
+              <label for="borrowed">Borrowed Date</label>
               <input type="date" class="form-control" name="issue_date" id="return" placeholder="">
               @error('issue_date')
                   <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>
             <div class="form-group">
-              <label for="return">Date Of Return:</label>
+              <label for="return">Date Of Return</label>
               <input type="date" class="form-control" name="return_date" id="return" placeholder="">
               @error('return_date')
                   <div class="text-danger">{{ $message }}</div>

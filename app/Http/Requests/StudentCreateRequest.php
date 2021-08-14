@@ -24,11 +24,11 @@ class StudentCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_id' => ['required'],
-            'fullname'=> ['required'],
-            'gender'=> ['required'],
-            'grade_section'=> ['required'],
-            'cpnumber'=> ['required'],
+            'student_id'    => 'required|unique:students',
+            'fullname'      => ['required'],
+            'gender'        => ['required'],
+            'grade_section' => ['required'],
+            'cpnumber'      => ['required'],
         ];
     }
 }

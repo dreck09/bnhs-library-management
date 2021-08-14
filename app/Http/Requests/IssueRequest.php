@@ -24,11 +24,11 @@ class IssueRequest extends FormRequest
     public function rules()
     {
         return [
-            'book_id' => ['required'],
-            'student_id' => ['required'],
-            'quantity' => ['required'],
-            'issue_date' => ['required'],
-            'return_date' => ['required'],
+            'book_id'       => ['required'],
+            'student_id'    => ['required'],
+            'quantity'      => ['required'],
+            'issue_date'    => ['required'],
+            'return_date'   => ['required'],
         ];
     }
 }

@@ -18,7 +18,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{route('book.update', $book->id)}}" method="post">
+                <form action="{{route('book.update', $book->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                     <div class="card-body">
@@ -47,6 +47,14 @@
                         </div>
                         
                         <div class="form-group">
+                            <label for="InputAuthor">Quantity</label>
+                            <input type="text" name="quantity" class="form-control" id="InputAuthor" placeholder="Enter Quantity" value="{{$book->qty}}">
+                            @error('quantity')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <label for="InputCategories">Categories</label>
                             <input type="text" name="categories" class="form-control" id="InputCategories" placeholder="Categories" value="{{$book->categories}}">
                             @error('categories')
@@ -57,7 +65,7 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Image</label>
                             <div class="input-group">
-                                <input class="form-control" placeholder="Excerpt" type="file" name="image">
+                                <input class="form-control" type="file" name="image" value="{{$book->image}}">
                                 <div class="input-group-append">
                                     <span class="input-group-text">Upload</span>
                                 </div>
