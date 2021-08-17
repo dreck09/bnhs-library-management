@@ -34,8 +34,8 @@
             <h1 class="text-center col-md-12 mt-3 text-danger">Book Not Found!</h1>
         @endforelse
         <!--End Book-->
-    </div>
-    <div class="card-footer">{{ $books->links("pagination::bootstrap-4") }}</div>
+    </div> 
+    <div class="mx-auto" style="width:200px;">{{ $books->links("pagination::bootstrap-4") }}</div>
 
 </div>
 <footer class="">

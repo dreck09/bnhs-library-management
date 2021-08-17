@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class ReturnBook extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'issue_id',
+        'return_on',
+        'qty',
+        'fines',
+        'remarks',
+    ];
+
 }
