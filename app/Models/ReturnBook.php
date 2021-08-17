@@ -17,4 +17,9 @@ class ReturnBook extends Model
         'remarks',
     ];
 
+    public function issue_book()
+    {
+        return $this->belongsTo(IssueBook::class);
+    }
+
 }

@@ -105,6 +105,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <p>Returned History</p> </a>
           </li>
           <li class="nav-item">
+          <a href="{{ route('not-return.book.list') }}" class="nav-link">
+          <i class="nav-icon fas fa-exclamation-triangle"></i>
+            <p>Not Returned</p> </a>
+          </li>
+          <li class="nav-item">
           <a href="{{ route('register.student') }}" class="nav-link">
           <i class="nav-icon fas fa-user-plus"></i>
             <p>Register Student</p> </a>
@@ -207,14 +212,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
 $('#returnModal').on('show.bs.modal', function (e) {
   var opener=e.relatedTarget;
-//get details from attributes
+
   var issueId=$(opener).attr('issue-id');
   var returnOn=$(opener).attr('return-on');
   var inputQty=$(opener).attr('input-qty');
-//set to form
+
   $('#returnForm').find('[name="issueId"]').val(issueId);
-  $('#returnForm').find('[name="returnOn"]').val(returnOn);
+  $('#returnForm').find('[name="dueOn"]').val(returnOn);
   $('#returnForm').find('[name="inputQty"]').val(inputQty);
+});
+
+$('#notReturnModal').on('show.bs.modal', function (e) {
+  var opener=e.relatedTarget;
+
+  var issueId=$(opener).attr('issue-id');
+  var reportsOn=$(opener).attr('report-on');
+  var inputQty=$(opener).attr('input-qty');
+
+  $('#notReturnForm').find('[name="issueId"]').val(issueId);
+  $('#notReturnForm').find('[name="reportOn"]').val(reportsOn);
+  $('#notReturnForm').find('[name="input_qty"]').val(inputQty);
 });
 </script>
 </body>

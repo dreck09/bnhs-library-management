@@ -2,13 +2,13 @@
 <div class="row">
           <div class="col-12">
           @if(session('message'))
-              <div class="alert alert-success alert-dismissible">
+              <div class="alert alert-danger alert-dismissible">
                   {{ session('message') }}
               </div>
             @endif
             <div class="card">
               <div class="card-header bg-primary">
-                <h3 class="card-title">List of Returned Books</h3>
+                <h3 class="card-title">List of Not Return Books</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive">
@@ -24,13 +24,13 @@
                       <th>Student Name</th>
                       <th>IssueDate</th>
                       <th>Due Date</th>
-                      <th>Returned On</th>
+                      <th>Report On</th>
                       <th>Fines</th>
                       <th>Remarks</th>
                     </tr>
                   </thead>
                   <tbody>
-                   @foreach($returnBook as $data)
+                   @foreach($notReturnBook as $data)
                     <tr>
                       <td hidden="">{{$data->id}}</td>
                       <td>{{$data->book_id}}</td>
@@ -41,7 +41,7 @@
                       <td>{{$data->fullname}}</td>
                       <td>{{$data->issue_date}}</td>
                       <td>{{$data->return_date}}</td>
-                      <td>{{$data->return_on}}</td>
+                      <td>{{$data->report_on}}</td>
                       <td>{{$data->fines}}</td>
                       <td>{{$data->remarks}}</td>
                     </tr>
