@@ -35,7 +35,7 @@
                   </div>
                   <div class="form-group">
                     <label for="return">Gender:</label>
-                    <input type="text" name="gender" class="form-control" maxlength="4" id="issueto" placeholder="ex: Male">
+                    <input type="text" name="gender" class="form-control" maxlength="6" id="issueto" placeholder="ex: Male">
                     @error('gender')
                       <div class="text-danger">{{ $message }}</div>
                     @enderror 

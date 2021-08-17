@@ -17,9 +17,10 @@ class CreateReturnBooksTable extends Migration
             $table->id();
             $table->unsignedBigInteger('issue_id');
             $table->dateTime('return_on');
-            $table->dateTime('lapse_date');
+            $table->integer('qty');
             $table->integer('fines');
-            $table->integer('remarks');
+            $table->string('remarks');
+            $table->foreign('issue_id')->references('id')->on('issue_books')->onDelete('cascade');
             $table->timestamps();
         });
     }

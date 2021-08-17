@@ -41,8 +41,8 @@
                       <td>{{$data->return_date}}</td>
                       <td>
                           <a class="btn btn-success"
-                            type="button" class="btn btn-primary" 
-                            data-toggle="modal" data-target="#returnModal">
+                            type="button" issue-id="{{$data->id}}" return-on="{{$data->return_date}}" input-qty="{{$data->qty}}" class="btn btn-primary returnBtn" 
+                            data-toggle="modal" data-target="#returnModal" >
                             <i class="fas fa-undo-alt"></i></a>
                           <a class="btn btn-danger" 
                             type="button" data-toggle="modal" 
@@ -59,7 +59,7 @@
             <!-- /.card -->
           </div>
         </div>
-        <!-- Modal1 -->
+        <!-- Modal RETURN BOOK -->
         <div class="modal fade" id="returnModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -70,12 +70,13 @@
                 </button>
               </div>
               <div class="modal-body">
-              <form action="" method="post" enctype="multipart/form-data">
+              <form action="{{route('add.return.book')}}" method="post" id="returnForm">
                 @csrf
                 <div class="card-body">
+                  <input id="issueId" name="issueId">
                   <div class="form-group">
                     <label for="return">Return On</label>
-                    <input type="date" class="form-control" name="return_on" id="return">
+                    <input type="date" class="form-control" name="returnOn" required="">
                     @error('return_date')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -83,7 +84,7 @@
 
                   <div class="form-group">
                       <label for="InputQuantity">Quantity</label>
-                      <input type="text" name="quantity" class="form-control" id="InputQuantity" placeholder="Enter Quantity">
+                      <input type="number" name="inputQty" class="form-control" id="InputQuantity" placeholder="Enter Quantity" required="">
                       @error('quantity')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -91,7 +92,7 @@
 
                   <div class="form-group">
                       <label for="InputNFines">Fines</label>
-                      <input type="text" name="no_r_fines" class="form-control" id="InputNFines" placeholder="Enter Fines">
+                      <input type="number" name="fines" class="form-control" id="InputNFines" placeholder="Enter Fines" required="">
                       @error('author')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -99,7 +100,7 @@
                   
                   <div class="form-group">
                       <label for="InputNRemarks">Remarks</label>
-                      <textarea type="text" name="no_r_remarks" class="form-control" id="InputNRemarks" placeholder="Enter Fines"></textarea>
+                      <textarea type="text" name="remarks" class="form-control" id="InputNRemarks" placeholder="Enter Fines" required=""></textarea>
                       @error('author')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -129,7 +130,7 @@
                 <div class="card-body">
                   <div class="form-group">
                       <label for="InputFines">Fines</label>
-                      <input type="text" name="fines" class="form-control" id="InputFines" placeholder="Enter Fines">
+                      <input type="text" name="no_r_fines" class="form-control" id="InputFines" placeholder="Enter Fines">
                       @error('author')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -137,7 +138,7 @@
                   
                   <div class="form-group">
                       <label for="InputRemarks">Remarks</label>
-                      <textarea type="text" name="remarks" class="form-control" id="InputRemarks" placeholder="Enter Remarks"></textarea>
+                      <textarea type="text" name="no_r_remarks" class="form-control" id="InputRemarks" placeholder="Enter Remarks"></textarea>
                       @error('author')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -151,4 +152,23 @@
             </div>
           </div>
         </div>
+@endsection
+@section('scripts')
+<!-- <script>
+  $(document).ready(function(){
+    $('.returnBtn').on('click',function (){
+        $tr = $(this).closest('tr');
+
+        var data = $tr.children('td').map(function(){
+          return $(this).text();
+        }).get();
+
+        console.log(data);
+
+        $('#issue_id').val(data[0]);
+        $('#return').val(data[1]);
+        $('InputQuantity').val(data[2]);
+    });
+  });
+</script> -->
 @endsection

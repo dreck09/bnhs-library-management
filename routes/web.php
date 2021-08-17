@@ -2,6 +2,8 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\IssueBookController;
+use App\Http\Controllers\ReturnBookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,10 +39,11 @@ Route::middleware('auth')->group(function () {
         Route::get('book/edit/{id}',[BookController::class, 'edit'])->name('book.edit');
         Route::put('book/update/{id}',[BookController::class, 'update'])->name('book.update');
         //Issue Book Student
-        Route::post('book/student/issue',[BookController::class, 'issuedBook'])->name('add.issue.book');
-        Route::get('book/student/issue/list', [BookController::class, 'issuedList'])->name('issue.book.list');
+        Route::post('book/student/issue',[IssueBookController::class, 'issuedBook'])->name('add.issue.book');
+        Route::get('book/student/issue/list', [IssueBookController::class, 'issuedList'])->name('issue.book.list');
         //Return Book
-        Route::get('book/student/return/list', [BookController::class, 'returnedList'])->name('return.book.list');
+        Route::post('book/student/return',[ReturnBookController::class, 'returnBook'])->name('add.return.book');
+        Route::get('book/student/return/list', [ReturnBookController::class, 'returnedList'])->name('return.book.list');
         //Student Route
         Route::post('student/store', [StudentController::class, 'store'])->name('student.add');
         Route::get('student/list', [StudentController::class, 'index'])->name('student.list');

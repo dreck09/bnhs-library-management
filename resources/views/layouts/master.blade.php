@@ -100,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <p>Borrow History</p> </a>
           </li>
           <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('return.book.list') }}" class="nav-link">
           <i class="nav-icon fas fa-redo-alt"></i>
             <p>Returned History</p> </a>
           </li>
@@ -193,6 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -201,6 +202,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
+</script>
+
+<script>
+$('#returnModal').on('show.bs.modal', function (e) {
+  var opener=e.relatedTarget;
+//get details from attributes
+  var issueId=$(opener).attr('issue-id');
+  var returnOn=$(opener).attr('return-on');
+  var inputQty=$(opener).attr('input-qty');
+//set to form
+  $('#returnForm').find('[name="issueId"]').val(issueId);
+  $('#returnForm').find('[name="returnOn"]').val(returnOn);
+  $('#returnForm').find('[name="inputQty"]').val(inputQty);
+});
 </script>
 </body>
 </html>
