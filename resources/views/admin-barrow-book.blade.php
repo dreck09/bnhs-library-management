@@ -1,8 +1,13 @@
 @extends('layouts.master') @section('content')
 <div class="row">
           <div class="col-12">
-          @if(session('error'))
+            @if(session('message'))
                 <div class="alert alert-success alert-dismissible">
+                    {{ session('message') }}
+                </div>
+            @endif
+            @if(session('error'))
+                <div class="alert alert-danger alert-dismissible">
                     {{ session('error') }}
                 </div>
             @endif
@@ -41,13 +46,25 @@
                       <td>{{$data->return_date}}</td>
                       <td>
                           <a class="btn btn-success"
-                            type="button" issue-id="{{$data->id}}" return-on="{{$data->return_date}}" input-qty="{{$data->qty}}" class="btn btn-primary returnBtn" 
-                            data-toggle="modal" data-target="#returnModal" >
-                            <i class="fas fa-undo-alt"></i></a>
+                            type="button" 
+                            issue-id="{{$data->id}}" 
+                            return-on="{{$data->return_date}}" 
+                            input-qty="{{$data->qty}}" 
+                            class="btn btn-primary returnBtn" 
+                            data-toggle="modal" 
+                            data-target="#returnModal">
+                            <i class="fas fa-undo-alt"></i>
+                          </a>
+
                           <a class="btn btn-danger" 
-                            type="button" data-toggle="modal" 
-                            data-target="#notreturnModal">
-                            <i class="fas fa-exclamation-triangle"></i></a>
+                            type="button" 
+                            issue-id="{{$data->id}}" 
+                            return-on="{{$data->return_date}}" 
+                            input-qty="{{$data->qty}}"
+                            data-toggle="modal" 
+                            data-target="#notReturnModal">
+                            <i class="fas fa-exclamation-triangle"></i>
+                          </a>
                       </td>
                     </tr>
                     @endforeach
@@ -73,7 +90,11 @@
               <form action="{{route('add.return.book')}}" method="post" id="returnForm">
                 @csrf
                 <div class="card-body">
-                  <input id="issueId" name="issueId">
+                  <div class="form-group">
+                    <label for="due">Due On</label>
+                    <input type="text" readonly="" class="form-control" name="dueOn" required="">
+                  </div>
+                  <input hidden="" id="issueId" name="issueId">
                   <div class="form-group">
                     <label for="return">Return On</label>
                     <input type="date" class="form-control" name="returnOn" required="">
@@ -114,8 +135,8 @@
             </div>
           </div>
         </div>
-        <!-- Modal2 -->
-        <div class="modal fade" id="notreturnModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal NOT RETURN BOOK -->
+        <div class="modal fade" id="notReturnModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header bg-danger">
@@ -125,20 +146,37 @@
                 </button>
               </div>
               <div class="modal-body">
-              <form action="" method="post" enctype="multipart/form-data">
-                @csrf
+              <form action="{{route('add.not-return.book')}}" method="post" id="notReturnForm">
+                @csrf            
                 <div class="card-body">
+                  <input hidden="" id="issueId" name="issueId">
                   <div class="form-group">
-                      <label for="InputFines">Fines</label>
-                      <input type="text" name="no_r_fines" class="form-control" id="InputFines" placeholder="Enter Fines">
+                    <label for="reportOn">Report On</label>
+                    <input type="date" class="form-control" name="reportOn" required="">
+                    @error('return_date')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+
+                  <div class="form-group">
+                      <label for="input_qty">Quantity</label>
+                      <input type="number" name="input_qty" class="form-control" id="input_qty" placeholder="Enter Quantity" required="">
+                      @error('quantity')
+                          <div class="text-danger">{{ $message }}</div>
+                      @enderror
+                  </div>
+
+                  <div class="form-group">
+                      <label for="input_fines">Fines</label>
+                      <input type="text" name="input_fines" class="form-control" id="input_fines" placeholder="Enter Fines">
                       @error('author')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
                   </div>
                   
                   <div class="form-group">
-                      <label for="InputRemarks">Remarks</label>
-                      <textarea type="text" name="no_r_remarks" class="form-control" id="InputRemarks" placeholder="Enter Remarks"></textarea>
+                      <label for="input_remarks">Remarks</label>
+                      <textarea type="text" name="input_remarks" class="form-control" id="input_remarks" placeholder="Enter Remarks"></textarea>
                       @error('author')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -167,7 +205,7 @@
 
         $('#issue_id').val(data[0]);
         $('#return').val(data[1]);
-        $('InputQuantity').val(data[2]);
+        $('#InputQuantity').val(data[2]);
     });
   });
 </script> -->

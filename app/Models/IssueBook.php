@@ -18,6 +18,16 @@ class IssueBook extends Model
         'return_date',
     ];
 
+    public function return_book()
+    {
+        return $this->hasMany(ReturnBook::class);
+    }
+
+    public function not_return()
+    {
+        return $this->hasMany(NotReturn::class);
+    }
+
     public function book()
     {
         return $this->belongsTo(Book::class);

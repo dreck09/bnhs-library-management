@@ -48,7 +48,7 @@ class ReturnBookController extends Controller
                 'fines' => $validate['fines'],
                 'remarks' => $validate['remarks'],
             ]);
-            return redirect(route('issue.book.list'))->with('message', 'Successfully Return!');
+            return redirect(route('return.book.list'))->with('message', 'Successfully Return!');
         }
         else
         {

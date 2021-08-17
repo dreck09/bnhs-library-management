@@ -19,7 +19,7 @@ class IssueBookController extends Controller
         $students = Student::where('student_id',$request->student_id)->get();
         if($students->isEmpty() | $books->isEmpty())
         {
-            return back()->with('message', 'Please input valid Student ID or Book ID..');
+            return back()->with('error', 'Please input valid Student ID or Book Number..');
         }else{
             foreach($students as $data){
                 $student = $data;
@@ -47,14 +47,18 @@ class IssueBookController extends Controller
             }
             else
             {
-                return back()->with('message', 'Invalid input quantity. The issue quantity must less than or equal to the quantity books!');
+                return back()->with('error', 'Invalid input quantity. The issue quantity must less than or equal to the quantity books!');
             }
         }
     }
 
     public function issuedList()
     {
-        $timeNow = Carbon\Carbon::now();
+        // $timeNow = Carbon\Carbon::now();
+        // $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2015-5-5 3:30:34');
+        // $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', '2015-5-6 9:30:34');
+        // $diff_in_days = $to->diffInDays($from);
+        // print_r($diff_in_days);
         $issue_books = IssueBook::where('status','borrowed')
         ->join('students', 'students.id', '=', 'issue_books.student_id')
         ->join('books', 'books.id', '=', 'issue_books.book_id')
@@ -72,6 +76,6 @@ class IssueBookController extends Controller
         ->groupBy('students.student_id','issue_books.id','students.fullname', 'books.book_id', 'books.title', 'books.author', 'issue_books.issue_date', 'issue_books.return_date', 'issue_books.qty')
         ->get();
 
-        return view('admin-barrow-book',compact('issue_books','timeNow'), ['metaTitle'=>'Borrow History | BNHS - Library Management']);
+        return view('admin-barrow-book',compact('issue_books'), ['metaTitle'=>'Borrow History | BNHS - Library Management']);
     }
 }

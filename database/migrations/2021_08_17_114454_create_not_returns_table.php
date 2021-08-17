@@ -15,6 +15,12 @@ class CreateNotReturnsTable extends Migration
     {
         Schema::create('not_returns', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('issue_id');
+            $table->dateTime('report_on');
+            $table->integer('qty');
+            $table->integer('fines');
+            $table->string('remarks');
+            $table->foreign('issue_id')->references('id')->on('issue_books')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -4,9 +4,9 @@
   <div class="row">
     <!-- left column -->
     <div class="col-md-12">
-    @if(session('message'))
+    @if(session('error'))
         <div class="alert alert-danger alert-dismissible">
-            {{ session('message') }}
+            {{ session('error') }}
         </div>
     @endif
       <!-- general form elements -->
@@ -42,14 +42,14 @@
             </div>
             <div class="form-group">
               <label for="borrowed">Borrowed Date</label>
-              <input type="date" class="form-control" name="issue_date" id="return" placeholder="">
+              <input type="datetime-local" class="form-control" name="issue_date" id="return" placeholder="">
               @error('issue_date')
                   <div class="text-danger">{{ $message }}</div>
               @enderror
             </div>
             <div class="form-group">
               <label for="return">Date Of Return</label>
-              <input type="date" class="form-control" name="return_date" id="return" placeholder="">
+              <input type="datetime-local" class="form-control" name="return_date" id="return" placeholder="">
               @error('return_date')
                   <div class="text-danger">{{ $message }}</div>
               @enderror
