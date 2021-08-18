@@ -78,7 +78,7 @@ git clone https://github.com/dreck09/bnhs-library-management.git
 * Second to change your working directory
 
 ```bash
-cd gov-inventory-back-end
+cd bnhs-library-management
 ```
 
 * Third to install the laravel dependencies and libraries required
