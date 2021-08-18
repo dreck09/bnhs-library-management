@@ -23,7 +23,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53</h3>
+                <h3>{{$countReturnBook}}</h3>
 
                 <p>Returned Books</p>
               </div>
@@ -52,7 +52,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$countNotReturnBook}}</h3>
                 <p>Not Return</p>
               </div>
               <div class="icon">

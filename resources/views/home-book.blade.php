@@ -31,10 +31,11 @@
             </div>
         </div>
         @empty
-            <h1 class="text-center col-md-12 mt-3 text-danger">Book Not Found!</h1>
+            <img src="{{asset('images/unnamed.svg')}}" class="col-md-6 mx-auto mt-5 mb-5">
         @endforelse
         <!--End Book-->
     </div> 
+    
     <div class="mx-auto" style="width:200px;">{{ $books->links("pagination::bootstrap-4") }}</div>
 
 </div>
