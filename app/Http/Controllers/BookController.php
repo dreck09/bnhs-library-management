@@ -11,21 +11,21 @@ use Illuminate\Support\Facades\File;
 
 class BookController extends Controller
 {
-    public function allBooksSearch()
+    public function allBooksSearch(Request $request)
     {
-        $search = $_GET['query'];
+        $search = $request->get('query');
         $books = Book::where("book_id","like","%".$search."%")
             ->orWhere("title","like","%".$search."%")
             ->orWhere("author","like","%".$search."%")
             ->orWhere("categories","like","%".$search."%")
-            ->orWhere("description","like","%".$search."%")->paginate(6);
+            ->orWhere("description","like","%".$search."%")->paginate(9);
 
         return view('home-book',compact('books'),['metaTitle'=>'Search Books']);
     }
 
     public function allBooks()
     {
-        $books = Book::latest()->paginate(6);
+        $books = Book::latest()->paginate(9);
         return view('home-book',compact('books'),['metaTitle'=>'Available Books']);
     }
 
