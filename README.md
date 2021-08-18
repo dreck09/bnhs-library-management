@@ -106,6 +106,13 @@ php artisan key:generate
 ```bash
 php artisan migrate --seed
 ```
+
+* Create the symbolic links configured for the application
+
+```bash
+php artisan storage:link
+```
+
 ## Installation Passport
 
 * To Install Passport via the Composer package manager.
