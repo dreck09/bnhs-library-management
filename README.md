@@ -61,3 +61,73 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Libarary Management System
+# Getting Started
+
+## Installation
+
+Before you use the library management system make sure that you install it in your computer.
+
+* First open your git bash and clone this reporsitory
+
+```bash
+git clone https://github.com/dreck09/bnhs-library-management.git
+```
+
+* Second to change your working directory
+
+```bash
+cd gov-inventory-back-end
+```
+
+* Third to install the laravel dependencies and libraries required
+
+```bash
+composer install
+```
+
+* Fourth to copy the environment file and change the values according to your development environment
+
+```bash
+cp .env.example .env
+```
+
+* To generate laravel key
+
+```bash
+php artisan key:generate
+```
+
+* To migrate and seed the database
+
+> Note! make it sure that you have already created a database before doing this and assign it to your .env file
+
+```bash
+php artisan migrate --seed
+```
+## Installation Passport
+
+* To Install Passport via the Composer package manager.
+
+```bash
+composer require laravel/passport
+```
+
+* You should migrate your database after installing the package. 
+
+```bash
+php artisan migrate
+```
+
+* To create the encryption keys needed to generate secure access tokens.
+
+```bash
+php artisan passport:install
+```
+
+* This command generates the encryption keys Passport needs in order to generate access tokens.
+
+```bash
+php artisan passport:keys
+```
