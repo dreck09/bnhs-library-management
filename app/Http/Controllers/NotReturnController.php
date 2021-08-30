@@ -68,6 +68,6 @@ class NotReturnController extends Controller
             'not_returns.remarks',
         )
         ->get();
-        return view('admin-not-return-book',compact('notReturnBook'), ['metaTitle'=>'Not Returned History | BNHS - Library Management']);
+        return view('admin-not-return-book',compact('notReturnBook'), ['metaTitle'=>'Not Returned History']);
     }
 }

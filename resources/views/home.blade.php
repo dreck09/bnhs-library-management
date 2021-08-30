@@ -1,7 +1,7 @@
 @extends('layouts.app') @section('content')
 
 <!--Home -->
-<section class="home" id="#home">
+<section class="home" id="home">
     <div class="home-container">
         <div class="logo">
             <img src="{{asset('/images/logo.png')}}" alt="">
@@ -13,7 +13,6 @@
         </div>
     </div>
 </section>
-
 <div class="about_us" id="about">
     <div class="text-center title-head">
         <h1>About Us</h1>
@@ -33,6 +32,9 @@
 </div>
 <div class="contact_us" id="contact_us">
     <div class="text-center title-head-dark">
+    <br>
+    <br>
+    <br>
         <h1>Contact Us</h1>
     </div>
     <div class="inner-container">

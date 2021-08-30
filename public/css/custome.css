@@ -4,12 +4,20 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
 
 /* layout app */
 
 .navbar {
     color: white;
     background-color: #050049;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 999;
 }
 
 .navbar ul li a,
@@ -36,7 +44,7 @@ section h1 {
 }
 
 .title-head {
-    padding-top: 40px;
+    padding-top: 100px;
 }
 
 .title-head-dark {

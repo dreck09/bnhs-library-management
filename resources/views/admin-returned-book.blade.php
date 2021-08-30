@@ -7,7 +7,7 @@
               </div>
             @endif
             <div class="card">
-              <div class="card-header bg-primary">
+              <div class="card-header bg-success">
                 <h3 class="card-title">List of Returned Books</h3>
               </div>
               <!-- /.card-header -->

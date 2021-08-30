@@ -26,18 +26,18 @@ class PageController extends Controller
         $countStudent = $students->count();
         return view('admin-dashboard',
             compact('countTotalBook','countStudent','countIssueBook','countAvailableBook','countNotReturnBook','countReturnBook'),
-            ['metaTitle'=>'Admin Dashboard | BNHS - Library Management']);
+            ['metaTitle'=>'Admin Dashboard']);
     }
     public function addBooks()
     {
-        return view('admin-add-book', ['metaTitle'=>'Admin Add Books | BNHS - Library Management']);
+        return view('admin-add-book', ['metaTitle'=>'Admin Add Books']);
     }
     public function addIssueBook()
     {
-        return view('admin-issue-book', ['metaTitle'=>'Admin Issue Books | BNHS - Library Management']);
+        return view('admin-issue-book', ['metaTitle'=>'Admin Issue Books']);
     }
     public function registerStudent()
     {
-        return view('admin-register-student', ['metaTitle'=>'Admin Register Student | BNHS - Library Management']);
+        return view('admin-register-student', ['metaTitle'=>'Admin Register Student']);
     }
 }

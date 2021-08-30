@@ -32,7 +32,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::get();
-        return view('admin-list-book',compact('books'), ['metaTitle'=>'Admin Book List | BNHS - Library Management']);
+        return view('admin-list-book',compact('books'), ['metaTitle'=>'Admin Book List']);
     }
 
     public function store(BookCreateRequest $request)

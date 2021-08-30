@@ -63,22 +63,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 # Libarary Management System
-# Getting Started
 
 ## Installation
 
-Before you use the library management system make sure that you install it in your computer.
+Before you use the food reservation system make sure that you install it in your computer.
 
 * First open your git bash and clone this reporsitory
 
 ```bash
-git clone https://github.com/dreck09/bnhs-library-management.git
+git clone https://github.com/dreck09/food-reservation.git
 ```
 
 * Second to change your working directory
 
 ```bash
-cd gov-inventory-back-end
+cd food-reservation
 ```
 
 * Third to install the laravel dependencies and libraries required
