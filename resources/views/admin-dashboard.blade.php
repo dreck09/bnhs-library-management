@@ -83,7 +83,7 @@
             <div class="small-box bg-fuchsia">
               <div class="inner">
                 <h3>{{$countTotalBook}}</h3>
-                <p>Total Books</p>
+                <p>Different Books</p>
               </div>
               <div class="icon">
                 <i class="fas fa-book"></i>

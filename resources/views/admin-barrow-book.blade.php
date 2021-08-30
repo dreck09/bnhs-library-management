@@ -92,17 +92,17 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="due">Due On</label>
-                    <input type="text" readonly="" class="form-control" name="dueOn" required="">
+                    <input type="text" id="due" readonly="" class="form-control" name="dueOn" required="">
                   </div>
                   <input hidden="" id="issueId" name="issueId">
                   <div class="form-group">
                     <label for="return">Return On</label>
-                    <input type="date" class="form-control" name="returnOn" required="">
+                    <input type="date" class="form-control" id="today" onchange="diffDate()" name="returnOn" required="">
+                    <div class="text-warning" id="dateResult"></div>
                     @error('return_date')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                   </div>
-
                   <div class="form-group">
                       <label for="InputQuantity">Quantity</label>
                       <input type="number" name="inputQty" class="form-control" id="InputQuantity" placeholder="Enter Quantity" required="">

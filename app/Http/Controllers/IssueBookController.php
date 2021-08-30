@@ -76,6 +76,6 @@ class IssueBookController extends Controller
         ->groupBy('students.student_id','issue_books.id','students.fullname', 'books.book_id', 'books.title', 'books.author', 'issue_books.issue_date', 'issue_books.return_date', 'issue_books.qty')
         ->get();
 
-        return view('admin-barrow-book',compact('issue_books'), ['metaTitle'=>'Borrow History | BNHS - Library Management']);
+        return view('admin-barrow-book',compact('issue_books'), ['metaTitle'=>'Borrow History']);
     }
 }

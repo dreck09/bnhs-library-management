@@ -2,7 +2,7 @@
 
 <div class="container my-5">
     <form action="{{route('home-book-search')}}" method="get" enctype="multipart/form-data">
-    <div class="row">
+    <div class="row pt-5">
         <div class="col search">
             <input class="input-search" name="query" type="text" placeholder="Search Autor or Title Book">
             <input class="input-button" type="submit" value="Search">
@@ -15,8 +15,8 @@
         @forelse ($books as $data)
         <div class="col-md-4 col-sm-6 col-12 bookouter">
             <div class="book-container">
-                <div class="image">
-                    <img src="/storage/books_image/{{$data->image}}" />
+                <div class="image mx-auto p-2">
+                    <img src="/storage/books_image/{{$data->image}}" height="150"/>
                 </div>
                 <div class="text">
                     <h3>{{$data->title}}</h3>

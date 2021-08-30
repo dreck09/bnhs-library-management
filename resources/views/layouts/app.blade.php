@@ -94,7 +94,7 @@
     </div>
 
     <footer class="">
-        <div class="footer-container">
+        <div class="footer-container p-5">
             <div class="image">
                 <img src="{{asset('/images/logo.png')}}" alt="">
                 <div class="title">

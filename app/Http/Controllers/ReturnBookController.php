@@ -76,7 +76,7 @@ class ReturnBookController extends Controller
             'return_books.remarks',
         )
         ->get();
-        return view('admin-returned-book',compact('returnBook'), ['metaTitle'=>'Return History | BNHS - Library Management']);
+        return view('admin-returned-book',compact('returnBook'), ['metaTitle'=>'Returned History']);
     }
 
 }
