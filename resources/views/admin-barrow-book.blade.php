@@ -42,8 +42,8 @@
                       <td>{{$data->qty}}</td>
                       <td>{{$data->student_id}}</td>
                       <td>{{$data->fullname}}</td>
-                      <td>{{$data->issue_date}}</td>
-                      <td>{{$data->return_date}}</td>
+                      <td>{{Carbon\Carbon::parse($data->issue_date)->format('M d Y')}}</td>
+                      <td>{{Carbon\Carbon::parse($data->return_date)->format('M d Y')}}</td>
                       <td>
                           <a class="btn btn-success"
                             type="button" 
