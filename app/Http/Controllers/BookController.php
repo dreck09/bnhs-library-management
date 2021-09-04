@@ -65,7 +65,7 @@ class BookController extends Controller
     public function edit($id)
     {
         $book = Book::findorfail($id);
-        return view('admin-edit-book',compact('book'));
+        return view('admin-edit-book',compact('book'),['metaTitle'=>'Edit Book Information']);
     }
 
     public function update(Request $request, $id)

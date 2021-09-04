@@ -14,6 +14,7 @@
             <thead>
               <tr>
                 <th hidden="">No.</th>
+                <th>Book Image</th>
                 <th>Book No.</th>
                 <th>Title</th>
                 <th>Autor</th>
@@ -27,6 +28,7 @@
               @foreach($books as $data)
               <tr>
                 <td hidden="">{{$data->id}}</td>
+                <td><img src="/storage/books_image/{{$data->image}}" height="100"/></td>
                 <td>{{$data->book_id}}</td>
                 <td>{{$data->title}}</td>
                 <td>{{$data->author}}</td>

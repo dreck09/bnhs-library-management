@@ -62,17 +62,42 @@
                         </div>
                         
                         <div class="form-group">
+                        <label>Select Categories</label>
+                        <select name="categories" id="InputCategories" class="form-control select2 select2-hidden-accessible" style="width: 100%;" aria-hidden="true">
+                            <option value="76">Mathematics</option>
+                            <option value="77">English</option>
+                            <option value="78">Science</option>
+                            <option value="79">Filipino</option>
+                            <option value="80">Literature & Fiction</option>
+                            <option value="81">Arts & Music</option>
+                            <option value="81">Comics</option>
+                            <option value="81">Biographies</option>
+                            <option value="81">Mysteries</option>
+                            <option value="81">Sports</option>
+                            <option value="81">Medical</option>
+                            <option value="81">Business</option>
+                            <option value="81">Cooking</option>
+                            <option value="81">Comp & Tech</option>
+                            <option value="81">Education & Reference</option>
+                            <option value="81">Westerns</option>
+                            <option value="81">Sci-Fi & Fantasy</option>
+                            <option value="81">Entertainment</option>
+                            <option value="81">Health & Fitness</option>
+                            <option value="81">Special Edition</option>
+                        </select>
+                        @error('categories')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        </div>
+                        <!-- <div class="form-group">
                             <label for="InputCategories">Categories</label>
                             <select name="categories" id="InputCategories" class="form-control">
                                 <option value="Math">Math</option>
                                 <option value="English">Englis</option>
                                 <option value="Science">Science</option>
                             </select>
-                            @error('categories')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                      
+                            
+                        </div> -->
                         <div class="form-group">
                             <label for="exampleInputFile">Image</label>
                             <div class="input-group">

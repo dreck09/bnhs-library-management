@@ -46,16 +46,24 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#home">Home</a>
+                            <a class="nav-link" href="#home">
+                            <i class="nav-icon fas fa-home"></i>
+                                Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">About Us</a>
+                            <a class="nav-link" href="#about">
+                            <i class="far fa-address-card"></i>
+                                About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact_us">Contact Us</a>
+                            <a class="nav-link" href="#contact_us">
+                            <i class="fas fa-phone-volume"></i>
+                                Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#books">Books</a>
+                            <a class="nav-link" href="#books">
+                            <i class="fas fa-book-reader"></i>
+                                Books</a>
                         </li>
                         <!-- @guest @if (Route::has('login'))
                         <li class="nav-item">

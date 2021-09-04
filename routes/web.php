@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\BookCategoryController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\StudentController;
@@ -7,16 +8,6 @@ use App\Http\Controllers\ReturnBookController;
 use App\Http\Controllers\NotReturnController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::get('/', function () {
     return view('home');
 });
@@ -33,6 +24,11 @@ Route::middleware('auth')->group(function () {
         Route::get('add/book', [PageController::class, 'addBooks'])->name('add.book');
         Route::get('issue/book', [PageController::class, 'addIssueBook'])->name('issue.book');
         Route::get('register/student', [PageController::class, 'registerStudent'])->name('register.student');
+        //Book Category
+        Route::get('book/categories', [BookCategoryController::class, 'viewBookCategories'])->name('categories');
+        Route::post('category/store',[BookCategoryController::class,'store'])->name('category.store');
+        Route::put('category/update',[BookCategoryController::class,'update'])->name('category.update');
+        Route::delete('category/delete/{id}',[BookCategoryController::class,'destroy'])->name('category.destroy');
         //Book Route
         Route::post('book/store', [BookController::class, 'store'])->name('book.store');
         Route::get('book/list', [BookController::class, 'index'])->name('book.list');

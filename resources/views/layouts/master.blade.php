@@ -15,6 +15,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -78,8 +81,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
           <li class="nav-item">
           <a href="{{ route('dashboard') }}" class="nav-link">
-          <i class="nav-icon fas fa-tachometer-alt"></i>
-          <p>Dashboard</p> </a>
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>Dashboard</p> </a>
+            </li>
+          <li class="nav-item">
+          <a href="{{ route('categories') }}" class="nav-link">
+            <i class="nav-icon fas fa-clipboard-list"></i>
+            <p>Book Categories</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('add.book') }}" class="nav-link">
@@ -99,7 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="nav-item">
           <a href="{{ route('issue.book.list') }}" class="nav-link">
           <i class="nav-icon fas fa-undo-alt"></i>
-            <p>Borrow History</p> </a>
+            <p>Borrowed History</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('return.book.list') }}" class="nav-link">
@@ -185,6 +193,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Select2 -->
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -200,6 +210,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+
+<script>
+  //Initialize Select2 Elements
+  $('.select2').select2()
+
+  //Initialize Select2 Elements
+  $('.select2bs4').select2({
+    theme: 'bootstrap4'
+  })
+</script>
 
 <script>
   $(function () {
@@ -234,6 +254,17 @@ $('#notReturnModal').on('show.bs.modal', function (e) {
   $('#notReturnForm').find('[name="issueId"]').val(issueId);
   $('#notReturnForm').find('[name="reportOn"]').val(reportsOn);
   $('#notReturnForm').find('[name="input_qty"]').val(inputQty);
+});
+</script>
+
+<script>
+$('#editModal').on('show.bs.modal', function (e) {
+  var opener=e.relatedTarget;
+  var id=$(opener).attr('id');
+  var category=$(opener).attr('category-name');
+
+  $('#editCatForm').find('[name="id"]').val(id);
+  $('#editCatForm').find('[name="categories"]').val(category);
 });
 </script>
 
