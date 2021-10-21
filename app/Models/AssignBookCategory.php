@@ -13,4 +13,14 @@ class AssignBookCategory extends Model
         'book_id',
         'book_category_id',
     ];
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
+
+    public function book_category()
+    {
+        return $this->belongsTo(BookCategory::class);
+    }
 }

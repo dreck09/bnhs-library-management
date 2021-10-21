@@ -5,6 +5,8 @@ use Carbon;
 use App\Models\Book;
 use App\Models\Student;
 use App\Models\IssueBook;
+use App\Models\BookCategory;
+use App\Models\AssignBookCategory;
 use App\Http\Requests\BookCreateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -59,13 +61,21 @@ class BookController extends Controller
             'categories' => $validate['categories'],
             'image' => $fileNameToStore,
         ]);
+        $book_cat = BookCategory::where('category_title',$request->categories)->get();
+        foreach($book_cat as $data){
+            AssignBookCategory::create([
+                'book_id' => $book->id,
+                'book_category_id' => $data->id,
+            ]);
+        }
         return back()->with('message', 'Successfully Book Added!');
     }
 
     public function edit($id)
     {
+        $category = BookCategory::get();
         $book = Book::findorfail($id);
-        return view('admin-edit-book',compact('book'),['metaTitle'=>'Edit Book Information']);
+        return view('admin-edit-book',compact('book','category'),['metaTitle'=>'Edit Book Information']);
     }
 
     public function update(Request $request, $id)
@@ -91,6 +101,17 @@ class BookController extends Controller
             $book->image = $fileNameToStore;
         }
         $book->update();
+
+        $book_del = AssignBookCategory::where('book_id',$id)->delete();
+
+        $book_cat = BookCategory::where('category_title',$request->categories)->get();
+        foreach($book_cat as $data){
+            AssignBookCategory::create([
+                'book_id' => $book->id,
+                'book_category_id' => $data->id,
+            ]);
+        }
+
         return back()->with('message', 'Successfully Updated!');
     }
 

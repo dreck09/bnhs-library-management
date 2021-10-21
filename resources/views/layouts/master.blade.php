@@ -36,7 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin/dashboard" class="nav-link">
+        <a href="{{ route('dashboard') }}" class="nav-link">
         <i class="nav-icon fas fa-home"></i>
         Home</a>
       </li>
@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-      <img src="{{ asset('/images/booklogo.png') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="/storage/admin_logo/booklogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">BNHSLM</span>
     </a>
 
@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('/images/adminlogo.png') }}" class="img-circle elevation-2">
+          <img src="/storage/admin_logo/adminlogo.png" class="img-circle elevation-2">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{auth()->user()->name}}</a>
@@ -265,6 +265,17 @@ $('#editModal').on('show.bs.modal', function (e) {
 
   $('#editCatForm').find('[name="id"]').val(id);
   $('#editCatForm').find('[name="categories"]').val(category);
+});
+</script>
+
+<script>
+$('#delModal').on('show.bs.modal', function (e) {
+  var opener=e.relatedTarget;
+  var id=$(opener).attr('id');
+  var category=$(opener).attr('category-name');
+
+  $('#delCatForm').find('[name="id"]').val(id);
+  document.getElementById('categories').innerHTML = category;
 });
 </script>
 

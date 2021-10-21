@@ -1,7 +1,8 @@
 @extends('layouts.master') @section('content')
 
 <div class="container-fluid">
-      <div class="d-flex">
+      <form action="{{route('categories.search')}}" method="get" enctype="multipart/form-data">
+      <div class="d-flex col-12">
         <div class="">
             @if(session('message'))
                 <div class="text-danger p-2">
@@ -14,26 +15,31 @@
                   data-target="#categoriesModal">Add Book Categories</a>
             </div>
         </div>
-        <div class="ml-auto">
+        <div class="ml-auto col-md-4">
           <div class="input-group">
-              <input type="search" class="form-control form-control-md" placeholder="Type your keywords here">
-              <div class="input-group-append">
-                  <button type="submit" class="btn btn-md btn-default">
-                      <i class="fa fa-search"></i>
-                  </button>
-              </div>
+                <input type="search" name="search" class="form-control form-control-md" placeholder="Type your keywords here">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-md btn-default">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
           </div>
         </div>
       </div>
+      </form>
       
       <!-- /.row -->
       <div class="row">
-      @foreach($category as $data)
+        @forelse($category as $data)
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>0</h3>
+              @forelse($data->assign_book_category->take(1) as $count)
+                <h3>{{$count->where('book_category_id',$data->id)->count()}}</h3>
+              @empty
+                <h3>0</h3>
+              @endforelse
               <p>{{$data->category_title}}</p>
             </div>
             <div class="icon">
@@ -41,29 +47,34 @@
             </div>
             <div class="d-flex small-box-footer">
               <div class="ml-auto">
-                <form action="{{route('category.destroy', $data->id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <a href="#" class="btn btn-primary">
+                  <a href="{{route('category.show',$data->category_title)}}" class="btn btn-primary">
                     <i class="far fa-eye"></i>
                   </a>
-                  <a  category-name="{{$data->category_title}}" 
+                  <a category-name="{{$data->category_title}}" 
                       id="{{$data->id}}" 
                       class="btn btn-primary" 
                       data-toggle="modal" 
                       data-target="#editModal">
                     <i class="fas fa-pencil-alt"></i>
                   </a>
-                  <button type="submit" class="btn btn-primary">
+                  <button data-toggle="modal" 
+                          data-target="#delModal"
+                          category-name="{{$data->category_title}}" 
+                          id="{{$data->id}}" 
+                          type="submit" 
+                          class="btn btn-primary">
                     <i class="fas fa-trash-alt"></i>
                   </button>
-                </form>
               </div>
             </div>
           </div>
         </div>
+        @empty
+        <div class="text-info p-4">
+            <h3>No records found!</h3>
+        </div>
         <!-- ./col -->
-      @endforeach  
+        @endforelse  
 
       </div>
       <!-- /.row -->
@@ -120,6 +131,36 @@
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-success">Update</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal DELETE ALERT BOOK CATEGORIES -->
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title" id="exampleModalLabel">Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="{{route('category.destroy')}}" method="post" id="delCatForm"  enctype="multipart/form-data">
+      @csrf
+      @method('DELETE')
+        <div class="card-body">
+          <div class="form-group">
+              <input hidden="" name="id" />
+              <label>Are you sure you want to delete this <span id="categories"></span> category?</label>
+          </div>
+        </div>
+        <div class="card-footer">
+            <a  type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">No</a>
+            <button type="submit" class="btn btn-danger">Yes</button>
         </div>
       </form>
       </div>

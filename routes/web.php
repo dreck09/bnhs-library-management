@@ -1,17 +1,20 @@
 <?php
-use App\Http\Controllers\BookCategoryController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\IssueBookController;
-use App\Http\Controllers\ReturnBookController;
-use App\Http\Controllers\NotReturnController;
+use App\Http\Controllers\{
+    BookCategoryController,
+    BookController,
+    PageController,
+    StudentController,
+    IssueBookController,
+    ReturnBookController,
+    NotReturnController,
+    HomeController,
+};
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/available/book/list', [BookController::class, 'allBooks'])->name('home-book');
 Route::get('/available/book/search', [BookController::class, 'allBooksSearch'])->name('home-book-search');
 Auth::routes();
@@ -20,15 +23,17 @@ Route::middleware('auth')->group(function () {
     //Admin Function
     Route::prefix('admin')->group(function(){
         //Static Pages
-        Route::get('dashboard', [PageController::class, 'viewAdminDashboard'])->name('dashboard');
+        Route::get('/', [PageController::class, 'viewAdminDashboard'])->name('dashboard');
         Route::get('add/book', [PageController::class, 'addBooks'])->name('add.book');
         Route::get('issue/book', [PageController::class, 'addIssueBook'])->name('issue.book');
         Route::get('register/student', [PageController::class, 'registerStudent'])->name('register.student');
         //Book Category
         Route::get('book/categories', [BookCategoryController::class, 'viewBookCategories'])->name('categories');
+        Route::get('book/categories/search', [BookCategoryController::class, 'searchBookCategories'])->name('categories.search');
+        Route::get('book/list/category/{name}', [BookCategoryController::class, 'show'])->name('category.show');
         Route::post('category/store',[BookCategoryController::class,'store'])->name('category.store');
         Route::put('category/update',[BookCategoryController::class,'update'])->name('category.update');
-        Route::delete('category/delete/{id}',[BookCategoryController::class,'destroy'])->name('category.destroy');
+        Route::delete('category/delete',[BookCategoryController::class,'destroy'])->name('category.destroy');
         //Book Route
         Route::post('book/store', [BookController::class, 'store'])->name('book.store');
         Route::get('book/list', [BookController::class, 'index'])->name('book.list');

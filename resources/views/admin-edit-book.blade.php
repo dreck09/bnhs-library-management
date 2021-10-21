@@ -55,11 +55,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="InputCategories">Categories</label>
-                            <input type="text" name="categories" class="form-control" id="InputCategories" placeholder="Categories" value="{{$book->categories}}">
-                            @error('categories')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
+                        <label>Select Categories</label>
+                        <select name="categories" id="InputCategories" class="form-control select2 select2-hidden-accessible" style="width: 100%;" aria-hidden="true">
+                            @foreach($category as $data)
+                            <option value="{{$data->category_title}}">{{$data->category_title}}</option>
+                            @endforeach
+                        </select>
+                        @error('categories')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                       
                         <div class="form-group">

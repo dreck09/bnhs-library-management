@@ -12,4 +12,9 @@ class BookCategory extends Model
     protected $fillable = [
         'category_title',
     ];
+
+    public function assign_book_category()
+    {
+        return $this->hasMany(AssignBookCategory::class);
+    }
 }

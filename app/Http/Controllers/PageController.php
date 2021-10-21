@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\NotReturn;
 use App\Models\IssueBook;
 use App\Models\ReturnBook;
+use App\Models\BookCategory;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -30,7 +31,8 @@ class PageController extends Controller
     }
     public function addBooks()
     {
-        return view('admin-add-book', ['metaTitle'=>'Admin Add Books']);
+        $category = BookCategory::get();
+        return view('admin-add-book',compact('category'),['metaTitle'=>'Admin Add Books']);
     }
     public function addIssueBook()
     {

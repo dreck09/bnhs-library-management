@@ -28,4 +28,9 @@ class Book extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function assign_book_category()
+    {
+        return $this->hasMany(AssignBookCategory::class);
+    }
 }
