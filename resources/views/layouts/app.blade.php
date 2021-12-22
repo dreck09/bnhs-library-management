@@ -28,14 +28,13 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{asset('/images/logo.png')}}" alt="" width="30" height="24"> Library Management System
+                <a class="navbar-brand ml-2" href="{{ url('/') }}">
+                    <img src="{{asset('/images/logo.png')}}" alt="" height="24"> Library Management System
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                
+                <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -51,28 +50,18 @@
                                 Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">
-                            <i class="far fa-address-card"></i>
-                                About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact_us">
-                            <i class="fas fa-phone-volume"></i>
-                                Contact Us</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="#books">
                             <i class="fas fa-book-reader"></i>
                                 Books</a>
                         </li>
-                        <!-- @guest @if (Route::has('login'))
+                        @guest @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"><i class="nav-icon fas fa-user"></i> {{ __('Login') }}</a>
                         </li>
-                        @endif @if (Route::has('register'))
+                        <!-- @endif @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
+                        </li> -->
                         @endif @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -90,7 +79,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endguest -->
+                        @endguest
                     </ul>
                 </div>
             </div>

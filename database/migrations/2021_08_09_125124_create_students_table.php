@@ -20,6 +20,8 @@ class CreateStudentsTable extends Migration
             $table->string('gender');
             $table->string('grade_section');
             $table->string('cpnumber');
+            $table->string('address');
+            $table->string('is_available')->default('normal');
             $table->timestamps();
         });
     }

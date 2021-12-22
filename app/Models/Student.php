@@ -15,6 +15,7 @@ class Student extends Model
         'gender',
         'grade_section',
         'cpnumber',
+        'is_available',
     ];
 
     public function issue_book()

@@ -14,7 +14,9 @@ class Book extends Model
         'title',
         'description',
         'author',
+        'year_published',
         'qty',
+        'is_available',
         'categories',
         'image',
     ];

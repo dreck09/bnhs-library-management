@@ -25,10 +25,11 @@ class BookCreateRequest extends FormRequest
     {
         return [
             'book_id'       => 'required|unique:books',
-            'title'         => ['required'],
+            'title'         => 'required|unique:books',
             'description'   => ['required'],
             'author'        => ['required'],
             'quantity'      => ['required'],
+            'published'     => ['required'],
             'categories'    => ['required'],
             'image'         => 'nullable|image|file|max:5000'
         ];

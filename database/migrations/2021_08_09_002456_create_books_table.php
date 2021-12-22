@@ -20,6 +20,8 @@ class CreateBooksTable extends Migration
             $table->string('description');
             $table->string('author');
             $table->integer('qty');
+            $table->string('year_published');
+            $table->string('is_available')->default('normal');
             $table->string('categories');
             $table->string('image');
             $table->timestamps();

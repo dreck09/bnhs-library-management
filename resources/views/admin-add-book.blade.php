@@ -1,7 +1,5 @@
-@extends('layouts.master') @section('content')
-
-
-
+@extends('layouts.master') 
+@section('content')
 <div class="container-fluid">
     <div class="row">
         <!-- left column -->
@@ -15,7 +13,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Add New Book</h3>
+                    <h3 class="card-title"><i class="fas fa-book"></i> Add Books</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -52,7 +50,13 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
+                        <div class="form-group">
+                            <label for="InputYearPublished">Year Published</label>
+                            <input type="date" name="published" class="form-control" id="InputYearPublished" placeholder="Enter Year Published">
+                            @error('published')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="InputAuthor">Quantity</label>
                             <input type="text" name="quantity" class="form-control" id="InputAuthor" placeholder="Enter Quantity">
@@ -90,13 +94,12 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ route('book.list') }}" class="btn btn-danger"><i class="fas fa-times"></i> Cancel</a>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
 @endsection

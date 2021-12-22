@@ -33,7 +33,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $books = Book::get();
+        $books = Book::where('is_available','normal')->get();
         return view('admin-list-book',compact('books'), ['metaTitle'=>'Admin Book List']);
     }
 
@@ -57,6 +57,7 @@ class BookController extends Controller
             'title' => $validate['title'],
             'description' => $validate['description'],
             'author' => $validate['author'],
+            'year_published' => $validate['published'],
             'qty' => $validate['quantity'],
             'categories' => $validate['categories'],
             'image' => $fileNameToStore,
@@ -115,10 +116,33 @@ class BookController extends Controller
         return back()->with('message', 'Successfully Updated!');
     }
 
+    public function archive($id)
+    {
+        $book = Book::findorfail($id);
+        $book->is_available = "archived";
+        $book->update();
+        if($book){
+            return back()->with('message', 'Book Archived!');
+        }
+    }
+
+    public function archiveList()
+    {
+        $books = Book::where('is_available','archived')->get();
+        return view('admin-archive-book',compact('books'), ['metaTitle'=>'Admin Archived Book List']);
+    }
+
     public function destroy($id)
     {
         $book = Book::findorfail($id);
         $book->delete();
         return back()->with('message', 'Successfully Updated!');
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $bid = $request->id;
+        $book = Book::whereIn('id',$bid)->delete();
+        return back()->with('message', 'Successfully Deleted!');
     }
 }

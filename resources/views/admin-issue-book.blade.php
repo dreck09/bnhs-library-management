@@ -57,7 +57,8 @@
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            <button type="submit" class="btn btn-success">Issue</button>
+            <a href="{{ route('book.list') }}" class="btn btn-danger"><i class="fas fa-times"></i> Cancel</a>
+            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Issue</button>
           </div>
         </form>
       </div>

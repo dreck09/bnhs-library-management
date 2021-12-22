@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
         Route::get('book/edit/{id}',[BookController::class, 'edit'])->name('book.edit');
         Route::put('book/update/{id}',[BookController::class, 'update'])->name('book.update');
+        Route::put('book/archive/{id}', [BookController::class, 'archive'])->name('book.archive');
+        Route::get('book/archive/list', [BookController::class, 'archiveList'])->name('book.archive-list');
+        Route::delete('book/del/seleted', [BookController::class, 'deleteSelected'])->name('book.selected');
         //Issue Book Student
         Route::post('book/student/issue',[IssueBookController::class, 'issuedBook'])->name('add.issue.book');
         Route::get('book/student/issue/list', [IssueBookController::class, 'issuedList'])->name('issue.book.list');
@@ -55,5 +58,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
         Route::get('student/edit/{id}',[StudentController::class, 'edit'])->name('student.edit');
         Route::put('student/update/{id}',[StudentController::class, 'update'])->name('student.update');
+        Route::put('student/archive/{id}', [StudentController::class, 'archive'])->name('student.archive');
+        Route::get('student/archive/list', [StudentController::class, 'archiveList'])->name('student.archive-list');
+        Route::delete('student/del/seleted', [StudentController::class, 'deleteSelected'])->name('student.selected');
     });
 });

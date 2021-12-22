@@ -10,7 +10,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $student = Student::get();
+        $student = Student::where('is_available','normal')->get();
         return view('admin-list-student',compact('student'), ['metaTitle'=>'Student List']);
     }
 
@@ -51,4 +51,28 @@ class StudentController extends Controller
         $student->delete();
         return back()->with('message', 'Successfully Student Delete!');
     }
+
+    public function archive($id)
+    {
+        $student = Student::findorfail($id);
+        $student->is_available = "archived";
+        $student->update();
+        if($student){
+            return back()->with('message', 'Student Archived!');
+        }
+    }
+
+    public function archiveList()
+    {
+        $student = Student::where('is_available','archived')->get();
+        return view('admin-archive-student',compact('student'), ['metaTitle'=>'Admin Archived Book List']);
+    }
+
+    public function deleteSelected(Request $request)
+    {
+        $sid = $request->id;
+        Student::whereIn('id',$sid)->delete();
+        return back()->with('message', 'Successfully Deleted!');
+    }
+
 }

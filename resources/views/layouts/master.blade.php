@@ -80,19 +80,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-          <a href="{{ route('dashboard') }}" class="nav-link">
+            <a href="{{ route('dashboard') }}" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard</p> </a>
-            </li>
+          </li>
           <li class="nav-item">
           <a href="{{ route('categories') }}" class="nav-link">
             <i class="nav-icon fas fa-clipboard-list"></i>
             <p>Book Categories</p> </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('add.book') }}" class="nav-link">
-            <i class="nav-icon fas fa-plus"></i>
-            <p>Add Book</p> </a>
+          <a href="{{ route('student.list') }}" class="nav-link">
+          <i class="nav-icon fas fas fa-list"></i>
+            <p>List Student</p> </a>
           </li>
           <li class="nav-item">
           <a href="{{ route('book.list') }}" class="nav-link">
@@ -100,35 +100,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <p>List Books</p> </a>
           </li>
           <li class="nav-item">
-          <a href="{{ route('issue.book') }}" class="nav-link">
-          <i class="nav-icon fas fa-book-medical"></i>
-            <p>Issue Books</p> </a>
+            <a href="{{ route('student.list') }}" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>Book History</p> 
+              <i class="nav-icon fas fa-angle-left right"></i>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{ route('issue.book.list') }}" class="nav-link">
+                <i class="nav-icon fas fa-undo-alt ml-3"></i>
+                  <p>Borrowed History</p> </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('return.book.list') }}" class="nav-link">
+                <i class="nav-icon fas fa-redo-alt ml-3"></i>
+                  <p>Returned History</p> </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('not-return.book.list') }}" class="nav-link">
+                <i class="nav-icon fas fa-exclamation-triangle ml-3"></i>
+                  <p>Not Returned</p> </a>
+              </li>
+            </ul>
           </li>
+        
           <li class="nav-item">
-          <a href="{{ route('issue.book.list') }}" class="nav-link">
-          <i class="nav-icon fas fa-undo-alt"></i>
-            <p>Borrowed History</p> </a>
+            <a href="{{ route('student.list') }}" class="nav-link">
+              <i class="nav-icon fas fa-archive"></i>
+              <p>Archived Post</p> 
+              <i class="nav-icon fas fa-angle-left right"></i>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+              <li class="nav-item">
+                <a href="{{route('book.archive-list')}}" class="nav-link">
+                <i class="nav-icon fas fa-book ml-3"></i>
+                <p>Archived Books</p></a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('student.archive-list')}}" class="nav-link">
+                <i class="nav-icon fas fa-user-friends ml-3"></i>
+                <p>Archived Students</p></a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-          <a href="{{ route('return.book.list') }}" class="nav-link">
-          <i class="nav-icon fas fa-redo-alt"></i>
-            <p>Returned History</p> </a>
-          </li>
-          <li class="nav-item">
-          <a href="{{ route('not-return.book.list') }}" class="nav-link">
-          <i class="nav-icon fas fa-exclamation-triangle"></i>
-            <p>Not Returned</p> </a>
-          </li>
-          <li class="nav-item">
-          <a href="{{ route('register.student') }}" class="nav-link">
-          <i class="nav-icon fas fa-user-plus"></i>
-            <p>Register Student</p> </a>
-          </li>
-          <li class="nav-item">
-          <a href="{{ route('student.list') }}" class="nav-link">
-          <i class="nav-icon fas fas fa-list"></i>
-            <p>List Student</p> </a>
-          </li>
+          
           <hr>
           @guest @if (Route::has('login'))
           @endif @else
@@ -301,6 +316,71 @@ var result = document.getElementById('dateResult');
   }
 
 }
+</script>
+
+<script>
+  $(function(e){
+    $("#checkAll").click(function(){
+      $(".classCheckbox").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelected").click(function(e){
+      e.preventDefault();
+      var allidb = [];
+
+      $("input:checkbox[name=id]:checked").each(function(){
+        allidb.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{route('book.selected')}}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          id:allidb
+        },
+       
+      });
+      //For wait 5 seconds
+      setTimeout(function() 
+      {
+        location.reload();  //Refresh page
+      }, 1000);
+    });
+
+  });
+</script>
+
+<script>
+  $(function(e){
+    $("#checkAllStudent").click(function(){
+      $(".classCheckboxStud").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelectedStud").click(function(e){
+      e.preventDefault();
+      var allids = [];
+
+      $("input:checkbox[name=id]:checked").each(function(){
+        allids.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{route('student.selected')}}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          id:allids
+        },
+      });
+      //For wait 5 seconds
+      setTimeout(function() 
+      {
+        location.reload();  //Refresh page
+      }, 1000);
+    });
+
+  });
 </script>
 </body>
 </html>

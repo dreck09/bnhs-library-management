@@ -14,6 +14,7 @@
             <div class="card">
               <div class="card-header bg-primary">
                 <h3 class="card-title">List of Barrow Table</h3>
+                <a href="{{ route('issue.book') }}" class="btn btn-success ml-2 float-right"><i class="fas fa-book-medical"></i> Issue Book</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive">

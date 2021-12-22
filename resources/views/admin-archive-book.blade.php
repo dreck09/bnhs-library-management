@@ -2,17 +2,16 @@
 
 
   <div class="row">
- 
     <div class="col-12">
-    @if(session('message'))
-    <div class="alert alert-success alert-dismissible">
-        {{ session('message') }}
-    </div>
-  @endif
+      @if(session('message'))
+          <div class="alert alert-success alert-dismissible">
+              {{ session('message') }}
+          </div>
+      @endif
       <div class="card">
         <div class="card-header bg-primary">
-          <h3 class="card-title"><i class="fas fa-book"></i> List of Books</h3>
-          <a href="{{ route('add.book') }}" class="btn btn-success float-right"><i class="nav-icon fas fa-plus"></i> Add Book</a>
+          <h3 class="card-title">Archived Books</h3>
+          <a href="#" id="deleteAllSelected" class="btn btn-danger float-right">Delete Seleted Books</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -20,6 +19,7 @@
             <thead>
               <tr>
                 <th hidden="">No.</th>
+                <th><input type="checkbox" id="checkAll"/>&nbsp;Selection</th>
                 <th>Book Image</th>
                 <th>Book No.</th>
                 <th>Title</th>
@@ -32,8 +32,9 @@
             </thead>
             <tbody>
               @foreach($books as $data)
-              <tr>
+              <tr id="bid{{$data->id}}">
                 <td hidden="">{{$data->id}}</td>
+                <td><input type="checkbox" name="id" class="classCheckbox" value="{{$data->id}}"/>&nbsp;</td>
                 <td><img src="/storage/books_image/{{$data->image}}" height="100"/></td>
                 <td>{{$data->book_id}}</td>
                 <td>{{$data->title}}</td>
@@ -42,15 +43,12 @@
                 <td>{{$data->qty}}</td>
                 <td>{{$data->categories}}</td>
                 <td>
-                  <form action="{{route('book.archive', $data->id)}}" method="post">
+                  <form action="{{route('book.destroy', $data->id)}}" method="post">
                   @csrf
-                  @method('PUT')
-                    <button type="submit" class="btn btn-primary .btn-sm">
-                      <i class="fas fa-archive"></i>
+                  @method('DELETE')
+                    <button type="submit" class="btn btn-danger .btn-sm">
+                      <i class="fas fa-trash"></i>
                     </button>
-                    <a href="{{route('book.edit',$data->id)}}" class="btn btn-success .btn-sm">
-                      <i class="fas fa-pencil-alt"></i>
-                    </a>
                   </form>
                 </td>
               </tr>
@@ -63,4 +61,5 @@
       <!-- /.card -->
     </div>
   </div>
+
 @endsection
